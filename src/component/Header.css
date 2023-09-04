@@ -1,0 +1,366 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
+
+.header{
+  width: 1439px;
+  height: 249px;
+  margin: auto;
+  background: #ffffff;
+  position: relative;
+
+}
+
+.vector{
+  position: absolute;
+left: 12.86%;
+right: 85.34%;
+top: 34.14%;
+bottom: 58.23%;
+
+}
+
+.cathouseitlogo{
+  position: absolute;
+left: 18.28%;
+right: 73.87%;
+top: 14.06%;
+bottom: 46.89%;
+
+
+}
+
+.line{
+  position: absolute;
+left: 0%;
+right: 0%;
+top: 65.46%;
+bottom: 34.54%;
+
+border: 1px solid rgba(53, 53, 53, 0.13);
+}
+
+.menu{
+  display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 0px;
+gap: 48px;
+
+position: absolute;
+width: 847px;
+height: 24px;
+left: 328.5px;
+top: 195px;
+}
+
+
+.product{
+  
+  border: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition:all .3s;
+    background: #ffffff;
+    border-radius: 38px;
+
+font-family: 'Kanit';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 24px;
+/* identical to box height */
+
+letter-spacing: 0.01em;
+
+color: #000000;
+
+
+/* Inside auto layout */
+
+flex: none;
+order: 2;
+flex-grow: 0;
+}
+
+.product:hover {
+  color: #F2BB93;
+  
+}
+
+.monthlypromotion{
+  border: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition:all .3s;
+    background: #ffffff;
+    border-radius: 38px;
+
+font-family: 'Kanit';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 24px;
+/* identical to box height */
+
+letter-spacing: 0.01em;
+
+color: #000000;
+
+
+/* Inside auto layout */
+
+flex: none;
+order: 2;
+flex-grow: 0;
+}
+.monthlypromotion:hover {
+  color: #F2BB93;
+  
+}
+.Sale{
+  border: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition:all .3s;
+    background: #ffffff;
+    border-radius: 38px;
+    font-family: 'Kanit';
+  
+  font-family: 'Kanit';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height */
+  
+  letter-spacing: 0.01em;
+  
+  color: #000000;
+  
+  
+  /* Inside auto layout */
+  
+  flex: none;
+  order: 3;
+  flex-grow: 0;
+}
+.Sale:hover {
+  color: #F2BB93;
+  
+}
+.popularbrands{
+  border: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition:all .3s;
+    background: #ffffff;
+    border-radius: 38px;
+
+font-family: 'Kanit';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 24px;
+/* identical to box height */
+
+letter-spacing: 0.01em;
+
+color: #000000;
+
+
+/* Inside auto layout */
+
+flex: none;
+order: 4;
+flex-grow: 0;
+}
+.popularbrands:hover {
+  color: #F2BB93;
+  
+}
+.featuredarticle{
+  border: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition:all .3s;
+    background: #ffffff;
+    border-radius: 38px;
+
+font-family: 'Kanit';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 24px;
+/* identical to box height */
+
+letter-spacing: 0.01em;
+
+color: #000000;
+
+
+/* Inside auto layout */
+
+flex: none;
+order: 5;
+flex-grow: 0;
+}
+
+.featuredarticle:hover {
+  color: #F2BB93;
+  
+}
+
+
+.under{
+  position: absolute;
+left: 25.5%;
+right: 74.03%;
+top: 50%;
+bottom: 16.67%;
+}
+
+.cartlogo{
+  position: absolute;
+  left: 85.41%;
+  right: 12.86%;
+  top: 34.14%;
+  bottom: 57.03%;
+}
+
+.login{
+  border: none;
+    padding: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition:all .3s;
+    background: #ffffff;
+    border-radius: 38px;
+    font-family: 'Kanit';
+
+    display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 16px;
+gap: 16px;
+
+position: absolute;
+left: 72.93%;
+right: 17.93%;
+top: 26.91%;
+bottom: 50.6%;
+
+border: 2px solid #4D4D4E;
+border-radius: 53px;
+}
+
+.login:hover {
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+  
+}
+
+.searchbar{
+  border: 1px solid #dee2e4;
+    outline: None;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    padding: 0 10px 0 30px;
+    vertical-align: middle;
+    font-size: 16px;
+    position: absolute;
+    left: 29.26%;
+    right: 30.37%;
+    top: 24.5%;
+    bottom: 49%;
+
+border: 2px solid #4D4D4E;
+border-radius: 68px;
+}
+
+.search{
+  position: absolute;
+left: 66.23%;
+right: 32.52%;
+top: 34.14%;
+bottom: 58.63%;
+}
+
+.loginlogo{
+  width: 15.45px;
+height: 16.45px;
+flex: none;
+order: 0;
+flex-grow: 0;
+}
+
+.cartlogo{
+  position: absolute;
+left: 0%;
+right: 20%;
+top: 13.64%;
+bottom: 0%;
+
+}
+
+.cart{
+  border: none;
+    padding: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition:all .3s;
+    background: #ffffff;
+    border-radius: 38px;
+    font-family: 'Kanit';
+
+    display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 16px;
+gap: 16px;
+
+position: absolute;
+left: 85.41%;
+right: 12.86%;
+top: 34.14%;
+bottom: 57.03%;
+
+}
+
+.mainpage{
+  border: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition:all .3s;
+    background: #ffffff;
+    border-radius: 38px;
+    font-family: 'Kanit';
+font-family: 'Kanit';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 24px;
+/* identical to box height */
+letter-spacing: 0.01em;
+color: #000000;
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+}
+
+.mainpage:hover {
+  color: #F2BB93;
+  
+}

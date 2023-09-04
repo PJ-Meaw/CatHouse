@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
+
+
+.ggg{
+    height: 380px;
+    width: 1440px;
+    margin: auto;
+    background-color: #2b2b2b;
+    position: relative;
+    flex-shrink: 0;
+    top: 120px;
+}
+
+.frame-58{
+    align-items: flex-start;
+    align-self: flex-end;
+    display: flex;
+    gap: 72px;
+    width: fit-content;
+    position: relative;
+    left: 160px;
+    top: 72px;
+}
+
+.frame-5{
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: fit-content;
+}
+
+.text2,.text3,.text4,.text5,.text6,.text8,.text9,.text10,.text11,.text12,.text14,.text15,.text16,.text17,.text18,.text20,.text21,.text22,.text23{
+    font-family: 'Kanit', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.12px;
+    width: fit-content;
+    color: aliceblue;
+}
+
+.text1,.text7,.text13,.text19{
+    font-family: 'Kanit', sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    letter-spacing: 0.42px;
+    margin-top: -1px;
+    width: fit-content;
+    color: aliceblue;
+}
+
+
+.textPayment{
+    position: absolute;
+    left: 1050px;
+    top: 72px;
+    font-family: 'Kanit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0.01em;
+    color: #FFFFFF;
+}
+
+.logopayment{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 16px;
+    position: absolute;
+    left: 1050px;
+    top: 100px;
+}
+

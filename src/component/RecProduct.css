@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
+
+.group{
+    position: relative;
+    top: 100px;
+    margin: auto;
+    height: 1414px;
+    width: 1111px;
+}
+
+.s{
+    font-family: 'Kanit', sans-serif;
+    margin-left: 20px;
+    color: #000;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 0.24px;
+}
+
+.kk{
+    display: flex;
+    gap: 53px;
+    position: relative;
+    margin-top: 30px;
+}

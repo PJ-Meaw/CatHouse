@@ -1,0 +1,89 @@
+.Ad{
+    height: 567px;
+    width: 1440px;
+    margin: auto;
+    background-color: #BDC8A3;
+    position: relative;
+
+}
+
+.Text{
+    font-size: 32px;
+    font-weight: 600;
+    letter-spacing: 0.32px;
+    color: #7b826a;
+    text-align: center;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.Left{
+    border: none;
+    padding: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition:all .3s;
+    background: #ffffff;
+    border-radius: 38px;
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    transform: translate(-50%, -50%);
+    border-radius: 12px;
+    border-color:rgba(0,0,0,0) ;
+    background-color:rgba(0,0,0,0)
+}
+
+
+.Right{
+    border: none;
+    padding: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition:all .3s;
+    background: #ffffff;
+    border-radius: 38px;
+    position: absolute;
+    top: 50%;
+    left: 90%;
+    transform: translate(-50%, -50%);
+    border-radius: 12px;
+    border-color:rgba(0,0,0,0) ;
+    background-color:rgba(0,0,0,0)
+
+}
+
+
+
+
+  .c2{
+    position: absolute;
+    left: 47.99%;
+    right: 51.25%;
+    top: 89.07%;
+    bottom: 8.99%;
+    
+  }
+
+  .c1{
+    position: absolute;
+    left: 49.65%;
+    right: 49.58%;
+    top: 89.07%;
+    bottom: 8.99%;
+  }
+
+  .c3{
+    position: absolute;
+    left: 51.31%;
+    right: 47.91%;
+    top: 89.07%;
+    bottom: 8.99%;
+  }
+
+  

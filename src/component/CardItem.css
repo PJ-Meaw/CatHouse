@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
+
+.carditem{
+  border-radius: 25px;
+  height: 424px;
+  width: 238px;
+  border: 2px solid #e3e3e3
+}
+
+.block{
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  left: 15px;
+  min-height: 339px;
+  position: relative;
+  top: 32px;
+  width: 209px;
+}
+
+.logoasus{
+  
+  
+}
+
+.pictureasus{
+  
+  
+}
+
+.detailsasus{
+  font-family: 'Kanit', sans-serif;
+  letter-spacing: 0.25px;
+  margin-left: 0.12px;
+  margin-top: 32px;
+  min-height: 36px;
+  font-size: 14px;
+ }
+
+.container{
+  align-items: flex-start;
+  display: flex;
+  height: 20px;
+  margin-left: 9.12px;
+  margin-top: 48px;
+  min-width: 91px;
+}
+
+.priceasus{
+  font-family: 'Kanit', sans-serif;
+  letter-spacing: 0.16px;
+  min-height: 20px;
+  min-width: 53px;
+}
+
+.b {
+  font-weight: bold;
+}

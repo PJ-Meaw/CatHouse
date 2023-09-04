@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
+
+  .NewProduct{
+    font-family: 'Kanit', sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+    letter-spacing: 0.32px;
+    text-align: center;
+    padding: 50px;
+    
+    
+  }
+
+  .groupproduct{
+    display: flex;
+    gap: 53px;
+    justify-content: center;
+    }
+
+  .Frame1{
+    font-family: 'Kanit', sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+    letter-spacing: 0.32px;
+    text-align: center;
+    padding: 50px;
+  }  
+
+  .FrameText1{
+    display: inline-flex;
+  padding: 8px 24px;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  border-radius: 50px;
+  border: 1px solid #4D4D4E;
+  color: #000;
+
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 0.16px;
+  }
+
+  .FrameText1:hover {
+    color: #F2BB93;
+  }
+

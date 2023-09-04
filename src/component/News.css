@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
+
+.content{
+    margin: auto;
+    height: 828px;
+    width: 1116px;
+    display: flex;
+    position: relative;
+    /* border-radius: 25px;
+    border: 1px solid #4D4D4E; */
+}
+
+#col{
+    flex-direction: column;
+}
+
+ #col2{
+    flex-direction: column;
+} 
+
+#row{
+    flex-direction: row;
+}
+
+#row2{
+    border-radius: 25px;
+    
+} 
+
+.red{
+    height: 394px;
+    width: 444px;
+    border-radius: 25px;
+    background-color: #D9D9D9;
+}
+
+.SaleItems{
+    font-family: 'Kanit', sans-serif;
+    position: relative;
+    top: 348px;
+    left: 32px;
+}
+
+.violet{
+    border-radius: 25px;
+    height: 181px;
+    width: 181px;
+    margin-top: 36px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    z-index: 2;
+    background-color: #D9D9D9;
+}
+
+.Title{
+    font-family: 'Kanit', sans-serif;
+    font-weight: bold;
+    letter-spacing: 0.16px;
+    min-height: 48px;
+    min-width: 209px;
+    position: relative;
+    top: 15px;
+    left: 208px;
+}
+
+.Details{
+    font-family: 'Kanit', sans-serif;
+    position: relative;
+    letter-spacing: 0.14px;
+    min-height: 54px;
+    min-width: 236px;
+    font-size: 14px;
+    left: 208px;
+    top: 20px;
+}
+
+.Frame{
+    font-family: 'Kanit', sans-serif;
+    align-items: center;
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    border-radius: 50px;
+    padding: 3.5px 16px;
+    width: fit-content;
+    border: 1px solid #4D4D4E;
+    position: relative;
+    left: 210px;
+    bottom: 5px;
+}
+
+.TextF{
+    letter-spacing: 0.12px;
+    margin-top: -0.5px;
+    width: fit-content;
+    font-size: 13px;
+    font-weight: bold;
+    
+}
+
+.RightVector{
+    height: 10.5px;
+    min-width: 11.5px;
+}
+
+.yellow{
+    font-family: 'Kanit', sans-serif;
+    height: 181px;
+    width: 601px;
+    border-radius: 25px;
+    margin-left: 72px;
+    background-color: #D9D9D9;
+    
+}
+
+.MonthlyPromotion{
+    position: absolute;
+    left: 550px;
+    top: 130px;
+}
+
+.blue{
+    font-family: 'Kanit', sans-serif;
+    height: 181px;
+    width: 601px;
+    border-radius: 25px;
+    margin-left: 72px;
+    margin-top: 36px;
+    background-color: #D9D9D9;
+}
+
+.PopularBrands{
+    position: absolute;
+    left: 550px;
+    top: 350px;
+}
+
+.green{
+    font-family: 'Kanit', sans-serif;
+    height: 394px;
+    width: 601px;
+    border-radius: 25px;
+    margin-left: 72px;
+    margin-top: 36px;
+    background-color: #D9D9D9;
+}
+
+.RecommendedArticles{
+    position: absolute;
+    left: 550px;
+    top: 460px;
+}

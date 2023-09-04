@@ -1,0 +1,26 @@
+.FrameOfAllNewProduct{
+    font-family: 'Kanit', sans-serif;
+    align-items: center;
+    border: 1px solid #4D4D4E;
+    border-radius: 50px;
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    padding: 8px 24px;
+    width: fit-content;
+    flex-direction: column;
+    position: relative;
+    left: 850px;
+    top: 292px;
+  }
+  
+  .TextAllOfNewProduct{
+    letter-spacing: 0.16px;
+    margin-top: -0.5px;
+    width: fit-content;
+  }
+
+  .RightVector{
+    height: 14px;
+    min-width: 16px;
+  }

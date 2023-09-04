@@ -1,0 +1,45 @@
+.custom-arrow2 {
+    position: absolute;
+    top: 42%;
+    z-index: 1;
+    /* สไตล์อื่น ๆ ที่คุณต้องการให้ปุ่มก่อนหน้าและปุ่มถัดไปแสดงผล */
+    border-radius: 50%;
+    width: 52px;
+    height: 52px;
+    background-color: #ffffff;
+    box-Shadow: 0 3px 7px rgba(0, 0, 0, .04);
+  }
+  
+  .custom-prev-arrow2 img {
+    width: 50%; /* ลดความกว้างเหลือ 50% */
+    height: 50%; /* ลดความสูงเหลือ 50% */
+    object-fit: contain; /* ปรับขนาดรูปภาพให้พอดีกับขนาดปุ่มและรักษาอัตราส่วนของภาพ */
+    display: block; /* จัดให้รูปภาพอยู่ตรงกลางของปุ่ม */
+    margin: 0 auto; /* จัดให้รูปภาพอยู่ตรงกลางของปุ่ม */
+    position: relative; /* เพื่อให้สามารถเปลี่ยนตำแหน่งของรูปภาพได้ */
+    top: 27%; /* ย้ายรูปภาพลงมาด้านล่างทีละ 50% */
+    
+  }
+  
+  .custom-next-arrow2 img {
+    width: 50%; /* ลดความกว้างเหลือ 50% */
+    height: 50%; /* ลดความสูงเหลือ 50% */
+    object-fit: contain; /* ปรับขนาดรูปภาพให้พอดีกับขนาดปุ่มและรักษาอัตราส่วนของภาพ */
+    display: block; /* จัดให้รูปภาพอยู่ตรงกลางของปุ่ม */
+    margin: 0 auto; /* จัดให้รูปภาพอยู่ตรงกลางของปุ่ม */
+    position: relative; /* เพื่อให้สามารถเปลี่ยนตำแหน่งของรูปภาพได้ */
+    top: 27%; /* ย้ายรูปภาพลงมาด้านล่างทีละ 50% */
+  }
+  
+  .custom-prev-arrow2 {
+    left: -25px;
+  }
+  
+  .custom-next-arrow2 {
+    right: -17px;
+  }
+  
+  .custom-arrow2:hover {
+    background-color: #F5F5F5;
+  }
+  
