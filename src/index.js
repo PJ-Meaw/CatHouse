@@ -15,8 +15,10 @@ import DA from './account-deliveryaddress';
 import DAA from './account-adddeliveryaddress';
 import OL from './account-orderlist';
 import WL from './account-wishlist';
-import WLL from './account-addwishlist'
-import PD1 from './New Component/ProductPage/productpage1'
+import WLL from './account-addwishlist';
+import Cart from './New Component/Cart/CartPage';
+import PaymentPage from './New Component/Payment/paymentinformationpage';
+import PD1 from './New Component/ProductPage/productpage1';
 import ErrorPage from './New Component/ErrorPage';
 
 const router = createBrowserRouter([
@@ -70,6 +72,16 @@ const router = createBrowserRouter([
   {
     path: "/PD1",
     element: <PD1/>
+    ,erroeElement:<ErrorPage/>
+  },
+  {
+    path: "/Cart",
+    element: <Cart/>
+    ,erroeElement:<ErrorPage/>
+  },
+  {
+    path: "/PaymentPage",
+    element: <PaymentPage/>
     ,erroeElement:<ErrorPage/>
   }
 ]);
