@@ -5,7 +5,7 @@ import {GroupOfNewProduct} from './component/GroupOfNewProduct';
 import {News} from './component/News';
 import {RecProduct} from './component/RecProduct';
 import {Tail} from './component/Tail';
-import NewHeader from './New Component/HeaderNotLoggedIn';
+import HeaderNotLoggedIn from './New Component/HeaderNotLoggedIn';
 import Advert from './New Component/Advert';
 import Article from './New Component/Article';
 import Slider1 from './New Component/Slider1';
@@ -21,7 +21,7 @@ const App =()=> {
   return (
 
     <div>
-      <NewHeader/>
+      <HeaderNotLoggedIn/>
       <Advert/>
       <Slider3/>
       <ShopBrand/>
