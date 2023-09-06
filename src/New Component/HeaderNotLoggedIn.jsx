@@ -23,6 +23,7 @@ import { Tab, FormControl,
   Flex, Menu, MenuButton, MenuList, MenuItem, HStack, Input, 
   InputGroup, InputLeftElement, Image,Box } from '@chakra-ui/react';
 import { Checkbox, CheckboxGroup } from '@chakra-ui/react'
+import HeaderLoggedIn from './HeaderLoggedIn';
 
   const SearchButtonWithModal = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -388,7 +389,9 @@ import { Checkbox, CheckboxGroup } from '@chakra-ui/react'
       };
     }, []);
 
-    return (
+    const Auth = false;
+    return ( <>
+    { Auth ? <HeaderLoggedIn/> : 
     <Flex as="header" align="center" py={2} px={320} borderBottom="1px" borderColor="gray.200" position={isScrolled ? 'fixed' : 'static'} top={isScrolled ? '0' : 'auto'} bg={isScrolled ? 'white' : 'transparent'} boxShadow={isScrolled ? '0px 1px 6px rgba(0, 0, 0, 0.1)' : 'none'} transition="all" zIndex="999">
       <Box w="5000px">
       <Flex align="center">
@@ -521,7 +524,9 @@ import { Checkbox, CheckboxGroup } from '@chakra-ui/react'
       </Flex>
       </Box>
     </Flex>
-
+    }
+    </>
+    
   );
 };
 export default HeaderNotLoggedIn;
