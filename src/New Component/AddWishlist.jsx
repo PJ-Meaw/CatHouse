@@ -8,9 +8,11 @@ import {
     Box,Flex,Text,Image,Button,Modal, ModalOverlay, 
     ModalContent, ModalHeader, ModalBody, ModalFooter, InputGroup,Input,
   } from '@chakra-ui/react'
-import picprofile from '../assets/profile2.png'
+import picprofile from '../assets/profile2.png';
 import { Link } from 'react-router-dom';
-import logout from '../assets/exit.png'
+import logout from '../assets/exit.png';
+import CIHS from '../New Component/CardItemHasSale';
+import CINS from '../New Component/CardItemNotSale'
 
 const AddWishlist = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -123,19 +125,31 @@ const AddWishlist = () => {
                         <Text fontWeight="bold" fontSize="18" position="relative" right="-10px" >รายการสินค้าที่สนใจ</Text>
                         <Text color="#757575" fontSize="12" position="relative" right="-10px" bottom="-5px">พื้นที่รวบรวมสินค้าที่ชอบจาก Cat House สู่มือคุณ</Text>
                     </Box>
-                    <Box w="940px" h="43px" bg="#FAFAFA" borderTop="1px" borderBottom="1px" borderColor="#DDDDDD" position="relative" right="-10px" top="-30px">
+                    <Box position="relative" right="-20px">
+                        <Flex gap="10px">
+                            <CIHS/>
+                            <CINS/>
+                            <CIHS/>
+                            <CINS/>
+                        </Flex>
+                        
+                    </Box>
+                        
+                    
+                    
+                    {/* <Box w="940px" h="43px" bg="#FAFAFA" borderTop="1px" borderBottom="1px" borderColor="#DDDDDD" position="relative" right="-10px" top="-30px">
                         <Flex>
                             <Text fontWeight="bold" position="relative" right="-100px" top="8px">สินค้า</Text>
                             <Text fontWeight="bold" position="relative" right="-460px" top="8px">ราคาต่อชิ้น</Text>
                             <Text fontSize="14" position="relative" right="-465px" top="11px">(บาท)</Text>
                         </Flex>
-                    </Box>
-                    <Box w="940px" h="110px" borderBottom="1px" borderColor="#DDDDDD" position="relative" right="-10px" top="-30px">
+                    </Box> */}
+                    {/* <Box w="940px" h="110px" borderBottom="1px" borderColor="#DDDDDD" position="relative" right="-10px" top="-30px">
 
                     </Box>
                     <Box w="940px" h="110px" borderBottom="1px" borderColor="#DDDDDD" position="relative" right="-10px" top="-30px">
 
-                    </Box>
+                    </Box> */}
                     
                 </Box>
             </Flex>

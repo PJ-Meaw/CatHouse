@@ -8,6 +8,7 @@ import profile from '../assets/profile.png'
 import favorite from '../assets/favorite.png'
 import emailpic from '../assets/email.png'
 import leftchevron from '../assets/leftchevron.png'
+import googleicon from '../assets/googleicon.png'
 import { Link } from 'react-router-dom';
 import { Field, Form, Formik } from 'formik';
 import { Tab, FormControl,
@@ -95,6 +96,10 @@ import HeaderLoggedIn from './HeaderLoggedIn';
             <ModalBody align="center" justify="center">
               <Image src={fulllogostore} alt="Logo" width="120px" height="120px" />
                 <LoginButtonWithEmail />
+                <Button onClick={onOpen} colorScheme="white" w="318px" h="50px" variant="outline" position="relative" top="30px" border="1px solid #D4D4D4" _hover={{boxShadow: '0 5px 6px rgba(0, 0, 0, .1)'}} >  
+                  <Image src={googleicon} alt="emailpic" width="20px" height="20px" position="relative" left="-50px"/>
+                  <Text fontFamily={'Kanit, sans-serif'} fontWeight="bold">ดำเนินการต่อด้วยGoogle</Text>
+                </Button>
             </ModalBody>
             <ModalFooter></ModalFooter>
           </ModalContent>
@@ -504,7 +509,7 @@ import HeaderLoggedIn from './HeaderLoggedIn';
         </Box>
 
         <Box p="1">
-          <Link to={'Login'}>
+          <Link to='/Cart'>
             <Button w="40px" h="40px" borderRadius="50%" bg="white" border="none" p={0} _hover={{ bg: 'gray.200' }}>
               <Image src={cartlogo} alt="cartlogo" w="65%" h="65%" borderRadius="50%" />
             </Button>
