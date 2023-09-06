@@ -1,22 +1,23 @@
 import React from 'react';
 import {Box, Image, Flex, Text, Button} from '@chakra-ui/react';
-import informationicon from './picpayment/profileAct.png';
+import informationicon from './picpayment/profile.png';
 import logoshop from './picpayment/logo.png';
-import service from './picpayment/delivery3.png';
+import service from './picpayment/delivery3Act.png';
 import creditcard from './picpayment/creditcard.png';
 import line from './picpayment/horizontalLine.png';
+import checkicon from './picpayment/check.png';
 import { Input } from '@chakra-ui/react'
 import { Link } from 'react-router-dom';
 
-const payment = () => { // Change function name to start with an uppercase letter
+const paymentdeliverly = () => { // Change function name to start with an uppercase letter
   return (
-    <Box w='1260px' h='1100px' position="relative" right="-320px" bottom="-20px" fontFamily={'Kanit, sans-serif'}>
+    <Box w='1260px' h='850px' position="relative" right="-320px" bottom="-20px" fontFamily={'Kanit, sans-serif'}>
         <Flex position="relative" right="-40px">
-            <Box w='770px' h='1020px' border="1px solid #000">
+            <Box w='770px' h='500px' border="1px solid #000">
               <Flex>
                 <Image src={logoshop} alt="Image 1" w="120px" h="80px" position="relative" right="-10px" bottom="-10px" />
                 
-                <Image src={informationicon} alt="Image 2" w="30px" h="30px" position="relative" right="-160px" bottom="-20px" />
+                <Image src={checkicon} alt="Image 2" w="20px" h="20px" position="relative" right="-160px" bottom="-25px" />
 
                 <Image src={line} alt="Image 5" w="30px" h="20px" position="relative" right="-175px" bottom="-25px" />
 
@@ -28,26 +29,14 @@ const payment = () => { // Change function name to start with an uppercase lette
               </Flex>
               
               <Box w='450px' h='100px' position="relative" right="-160px" bottom="-50px" >
-                <Text fontSize="25px" fontWeight="bold" >โปรดกรอกข้อมูลของคุณ</Text>
-                <Text position="relative" bottom="-20px" >อีเมล</Text>
-                <Input border="1px solid #000" size='lg' position="relative" bottom="-20px" />
-                <Text position="relative" bottom="-40px" >ชื่อ-สกุล</Text>
-                <Input border="1px solid #000" size='lg' position="relative" bottom="-40px" />
-                <Text position="relative" bottom="-60px" >เบอร์โทรศัพท์</Text>
-                <Input border="1px solid #000" size='lg' position="relative" bottom="-60px" />
-                <Text position="relative" bottom="-80px" >รหัสไปรษณีย์</Text>
-                <Input border="1px solid #000" size='lg' position="relative" bottom="-80px" />
-                <Text position="relative" bottom="-100px" >ที่อยู่บรรทัดที่ 1</Text>
-                <Input border="1px solid #000" size='lg' position="relative" bottom="-100px" />
-                <Text position="relative" bottom="-120px" >ที่อยู่บรรทัดที่ 2 (ไม่บังคับ)</Text>
-                <Input border="1px solid #000" size='lg' position="relative" bottom="-120px" />
-                <Text position="relative" bottom="-140px" >จุดสังเกตใกล้เคียง (ไม่บังคับ)</Text>
-                <Input border="1px solid #000" size='lg' position="relative" bottom="-140px" />
-                <Link to="/PaymentDe"><Button w="450px" h="60px" position="relative" bottom="-180px" rounded="100px" bg="#0F63EA" color="white" _hover={{ bgColor: '#0058A3' }}>ขั้นตอนต่อไป</Button></Link>
-                <Button w="450px" h="60px" position="relative" bottom="-200px" rounded="100px" bg="white" _hover={{ bgColor: '#DFDFDF' }}>กลับไปช็อปต่อ</Button>
+                <Text fontSize="25px" fontWeight="bold" >คุณต้องการใช้การจัดส่งสินค้าแบบไหน</Text>
+                <Link to="/PaymentDeCAC"><Button w="450px" h="80px" position="relative" bottom="-30px" rounded="5px" bg="white" color="black" _hover={{ borderColor: '#0058A3' }} border="1px" borderColor="#DFDFDF"><Text>รับหน้าร้าน</Text></Button></Link>
+                <Link to="/PaymentDeSBT"><Button w="450px" h="80px" position="relative" bottom="-50px" rounded="5px" bg="white" color="black" _hover={{ borderColor: '#0058A3' }} border="1px" borderColor="#DFDFDF"><Text>จัดส่งโดยรถบรรทุก</Text></Button></Link>
+                <Link to="/PaymentPage"><Button w="450px" h="60px" position="relative" bottom="-80px" rounded="100px" bg="white" _hover={{ bgColor: '#DFDFDF' }}>ขั้นตอนก่อนหน้านี่</Button></Link>
               </Box>
               
             </Box>
+            
             <Box w='390px' h='750px' position="relative" right="-20px" border="1px solid #000">
               <Box borderBottom="1px solid #D3D3D3" w="350px" h="120px" position="relative" right="-18px" >
                 <Flex position="relative" bottom="-60px" >
@@ -89,7 +78,7 @@ const payment = () => { // Change function name to start with an uppercase lette
                   </Box>
                 </Flex>
               </Box>
-
+              
               {/* สินค้า 2 */}
               <Box borderBottom="1px solid #D3D3D3" w="350px" h="135px" position="relative" right="-18px" >
                 <Flex position="relative" bottom="-30px" w="100%">
@@ -112,4 +101,4 @@ const payment = () => { // Change function name to start with an uppercase lette
   );
 };
 
-export default payment;
+export default paymentdeliverly;

@@ -204,7 +204,7 @@ import { Checkbox, CheckboxGroup } from '@chakra-ui/react'
         </Box>
 
         <Box p="1">
-          <Link to={'Login'}>
+          <Link to='/Cart'>
             <Button w="40px" h="40px" borderRadius="50%" bg="white" border="none" p={0} _hover={{ bg: 'gray.200' }}>
               <Image src={cartlogo} alt="cartlogo" w="65%" h="65%" borderRadius="50%" />
             </Button>

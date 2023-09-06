@@ -392,7 +392,7 @@ import { Checkbox, CheckboxGroup } from '@chakra-ui/react'
     <Flex as="header" align="center" py={2} px={320} borderBottom="1px" borderColor="gray.200" position={isScrolled ? 'fixed' : 'static'} top={isScrolled ? '0' : 'auto'} bg={isScrolled ? 'white' : 'transparent'} boxShadow={isScrolled ? '0px 1px 6px rgba(0, 0, 0, 0.1)' : 'none'} transition="all" zIndex="999">
       <Box w="5000px">
       <Flex align="center">
-        <Link to='/' >
+        <Link to='/HomewithLogin' >
           <Image src={logostore} alt="Logo" width="60px" height="40px" />
         </Link>
         

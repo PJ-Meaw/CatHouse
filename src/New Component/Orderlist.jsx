@@ -124,25 +124,10 @@ const Orderlist = () => {
                     <Box position="relative" top="-55px">
                         <Tabs fontFamily={'Kanit, sans-serif'}>
                         <TabList >
-                            <Tab fontWeight="bold" borderRadius="7px" colorScheme="#0F63E9" color="#727381" _selected={{ color: activeTabColor }} _focus={{ boxShadow: 'none' }}>ที่ต้องชำระเงิน</Tab>
-                            <Tab fontWeight="bold" borderRadius="7px" colorScheme="#0F63E9" color="#727381" _selected={{ color: activeTabColor }} _focus={{ boxShadow: 'none' }}>จัดเตรียมสินค้า</Tab>
-                            <Tab fontWeight="bold" borderRadius="7px" colorScheme="#0F63E9" color="#727381" _selected={{ color: activeTabColor }} _focus={{ boxShadow: 'none' }}>ส่งมอบสินค้า</Tab>
-                            <Tab fontWeight="bold" borderRadius="7px" colorScheme="#0F63E9" color="#727381" _selected={{ color: activeTabColor }} _focus={{ boxShadow: 'none' }}>ที่ยกเลิก</Tab>
+                            <Tab fontWeight="bold" borderRadius="7px" colorScheme="#0F63E9" color="#727381" _selected={{ color: activeTabColor }} _focus={{ boxShadow: 'none' }}>คำสั่งซื้อ</Tab>
                         </TabList>
                         <TabIndicator mt="-4px" height="4px" bg="#0F63E9" borderRadius="2px" />
                         <TabPanels>
-                            <TabPanel align="center" justify="center" position="relative" top="150px">
-                                <Text color="#808080">ไม่มีรายการคำสั่งซื้อ</Text>
-                            </TabPanel>
-
-                            <TabPanel align="center" justify="center" position="relative" top="150px">
-                                <Text color="#808080">ไม่มีรายการคำสั่งซื้อ</Text>
-                            </TabPanel>
-
-                            <TabPanel align="center" justify="center" position="relative" top="150px">
-                                <Text color="#808080">ไม่มีรายการคำสั่งซื้อ</Text>
-                            </TabPanel>
-
                             <TabPanel align="center" justify="center" position="relative" top="150px">
                                 <Text color="#808080">ไม่มีรายการคำสั่งซื้อ</Text>
                             </TabPanel>

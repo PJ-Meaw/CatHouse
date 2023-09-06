@@ -18,6 +18,11 @@ import WL from './account-wishlist';
 import WLL from './account-addwishlist';
 import Cart from './New Component/Cart/CartPage';
 import PaymentPage from './New Component/Payment/paymentinformationpage';
+import PaymentDe from './New Component/Payment/paymentdeliverlypage';
+import PaymentDeCAC from './New Component/Payment/ClickandCollectpage';
+import PaymentDeSBT from './New Component/Payment/sendbytruckpage';
+import OrderConSBT from './New Component/Payment/OrderConSBTpage';
+import OrderConCAC from './New Component/Payment/OrderConCACpage';
 import PD1 from './New Component/ProductPage/productpage1';
 import ErrorPage from './New Component/ErrorPage';
 
@@ -82,6 +87,31 @@ const router = createBrowserRouter([
   {
     path: "/PaymentPage",
     element: <PaymentPage/>
+    ,erroeElement:<ErrorPage/>
+  },
+  {
+    path: "/PaymentDe",
+    element: <PaymentDe/>
+    ,erroeElement:<ErrorPage/>
+  },
+  {
+    path: "/PaymentDeCAC",
+    element: <PaymentDeCAC/>
+    ,erroeElement:<ErrorPage/>
+  },
+  {
+    path: "/PaymentDeSBT",
+    element: <PaymentDeSBT/>
+    ,erroeElement:<ErrorPage/>
+  },
+  {
+    path: "/OrderConSBT",
+    element: <OrderConSBT/>
+    ,erroeElement:<ErrorPage/>
+  },
+  {
+    path: "/OrderConCAC",
+    element: <OrderConCAC/>
     ,erroeElement:<ErrorPage/>
   }
 ]);
