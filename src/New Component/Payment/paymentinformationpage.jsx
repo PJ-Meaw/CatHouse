@@ -2,12 +2,15 @@
 import NewHeader from '../HeaderNotLoggedIn';
 import Stript from './paymentinformation'
 import Footer from '../NewFooter';
+import { useContext, useEffect } from 'react';
+import { Context } from '../../context/context'
 
-
-const paymentpage =()=> {
+const Paymentpage = () => {
+    const {userData, setUserData} = useContext(Context)
+    console.log(userData)
   return (
-
     <div>
+        {userData?.username}
       <NewHeader/>
         <Stript/>
       <Footer/>
@@ -17,4 +20,4 @@ const paymentpage =()=> {
   );
 }
 
-export default paymentpage;
+export default Paymentpage;

@@ -1,11 +1,12 @@
 import { ChakraProvider } from '@chakra-ui/react'
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
 import "./index.css";
+import {Context, ContextProvider} from './context/context'
 import Home from './Home';
 import reportWebVitals from './reportWebVitals';
 import Login from './Login';
@@ -117,11 +118,13 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
+//   <React.StrictMode>
     <ChakraProvider>
-      <RouterProvider router={router}/>
+        <ContextProvider>
+            <RouterProvider router={router}/>
+        </ContextProvider>
     </ChakraProvider>
-  </React.StrictMode>
+//   </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
