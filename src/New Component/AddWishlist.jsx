@@ -130,6 +130,7 @@ const AddWishlist = () => {
                             <CIHS/>
                             <CINS/>
                             <CIHS/>
+                            <CIHS/>
                             <CINS/>
                         </Flex>
                         

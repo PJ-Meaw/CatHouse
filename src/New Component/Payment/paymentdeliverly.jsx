@@ -7,9 +7,10 @@ import creditcard from './picpayment/creditcard.png';
 import line from './picpayment/horizontalLine.png';
 import checkicon from './picpayment/check.png';
 import { Input } from '@chakra-ui/react'
-import { Link } from 'react-router-dom';
-
-const paymentdeliverly = () => { // Change function name to start with an uppercase letter
+import { Link, useLocation } from 'react-router-dom';
+import { bufferToImage } from '../../helper/bufferToImage';
+const Paymentdeliverly = () => { // Change function name to start with an uppercase letter
+    const {totalPrice, cartData ,addressData} = useLocation().state;
   return (
     <Box w='1260px' h='850px' position="relative" right="-320px" bottom="-20px" fontFamily={'Kanit, sans-serif'}>
         <Flex position="relative" right="-40px">
@@ -30,18 +31,30 @@ const paymentdeliverly = () => { // Change function name to start with an upperc
               
               <Box w='450px' h='100px' position="relative" right="-160px" bottom="-50px" >
                 <Text fontSize="25px" fontWeight="bold" >คุณต้องการใช้การจัดส่งสินค้าแบบไหน</Text>
-                <Link to="/PaymentDeCAC"><Button w="450px" h="80px" position="relative" bottom="-30px" rounded="5px" bg="white" color="black" _hover={{ borderColor: '#0058A3' }} border="1px" borderColor="#DFDFDF"><Text>รับหน้าร้าน</Text></Button></Link>
-                <Link to="/PaymentDeSBT"><Button w="450px" h="80px" position="relative" bottom="-50px" rounded="5px" bg="white" color="black" _hover={{ borderColor: '#0058A3' }} border="1px" borderColor="#DFDFDF"><Text>จัดส่งโดยรถบรรทุก</Text></Button></Link>
-                <Link to="/PaymentPage"><Button w="450px" h="60px" position="relative" bottom="-80px" rounded="100px" bg="white" _hover={{ bgColor: '#DFDFDF' }}>ขั้นตอนก่อนหน้านี่</Button></Link>
+                <Link to="/PaymentDeCAC" state={{totalPrice : totalPrice, addressData : addressData, cartData : cartData}}>
+                    <Button w="450px" h="80px" position="relative" bottom="-30px" rounded="5px" bg="white" color="black" _hover={{ borderColor: '#0058A3' }} border="1px" borderColor="#DFDFDF">
+                        <Text>รับหน้าร้าน</Text>
+                    </Button>
+                </Link>
+                <Link to="/PaymentDeSBT" state={{totalPrice : totalPrice, addressData : addressData, cartData : cartData}}>
+                    <Button w="450px" h="80px" position="relative" bottom="-50px" rounded="5px" bg="white" color="black" _hover={{ borderColor: '#0058A3' }} border="1px" borderColor="#DFDFDF">
+                        <Text>จัดส่งโดยรถบรรทุก</Text>
+                    </Button>
+                </Link>
+                <Link to="/PaymentPage" state={{totalPrice : totalPrice, addressData : addressData, cartData : cartData}}>
+                    <Button w="450px" h="60px" position="relative" bottom="-80px" rounded="100px" bg="white" _hover={{ bgColor: '#DFDFDF' }}>
+                        ขั้นตอนก่อนหน้านี่
+                    </Button>
+                </Link>
               </Box>
               
             </Box>
             
-            <Box w='390px' h='750px' position="relative" right="-20px" border="1px solid #000">
+            <Box w='390px' h='100%' position="relative" right="-20px" border="1px solid #000">
               <Box borderBottom="1px solid #D3D3D3" w="350px" h="120px" position="relative" right="-18px" >
                 <Flex position="relative" bottom="-60px" >
                   <Text fontWeight="bold" letterSpacing="1px">ราคารวม</Text>
-                  <Text position="relative" right="-173px" fontSize="30px" top="-15px" fontWeight="bold" letterSpacing="1px">1,809</Text>
+                  <Text position="relative" right="-173px" fontSize="30px" top="-15px" fontWeight="bold" letterSpacing="1px">{Intl.NumberFormat("en-US").format(totalPrice)}</Text>
                   <Text position="relative" right="-175px" fontSize="22px" top="-5px" fontWeight="bold" >บาท</Text>
                 </Flex>
                 <Flex color="gray.400" position="relative" bottom="-45px" fontSize="14px">
@@ -49,51 +62,44 @@ const paymentdeliverly = () => { // Change function name to start with an upperc
                   <Text position="relative" right="-215px">---</Text>
                 </Flex>
               </Box>
-
+            
               <Box borderBottom="1px solid #D3D3D3" w="350px" h="280px" position="relative" right="-18px">
                 <Text position="relative" bottom="-15px" fontWeight="bold" letterSpacing="1px">ข้อมูลของคุณ</Text>
-                <Text position="relative" bottom="-25px" color="gray.400">Mutsuri Watson</Text>
-                <Text position="relative" bottom="-28px" color="gray.400">ที่อยู่บรรทัดที่ 1</Text>
-                <Text position="relative" bottom="-31px" color="gray.400">ที่อยู่บรรทัดที่ 2</Text>
-                <Text position="relative" bottom="-34px" color="gray.400">รหัสไปรษณีย์</Text>
-                <Text position="relative" bottom="-37px" color="gray.400">ไทย</Text>
-                <Text position="relative" bottom="-40px" color="gray.400">จุดสังเกตใกล้เคียง</Text>
-                <Text position="relative" bottom="-43px" color="gray.400">เบอร์โทรศัพท์</Text>
-                <Text position="relative" bottom="-46px" color="gray.400">อีเมล</Text>
+                <Text position="relative" bottom="-25px" color="gray.400">ชื่อ-สกุล : {addressData.name }</Text>
+                <Text position="relative" bottom="-28px" color="gray.400">ที่อยู่ : { addressData.address }</Text>
+                <Text position="relative" bottom="-31px" color="gray.400">แขวง/ตำบล : { addressData.subDistrict }</Text>
+                <Text position="relative" bottom="-34px" color="gray.400">เขต/อำเภอ : { addressData.district  }</Text>
+                <Text position="relative" bottom="-37px" color="gray.400">จังหวัด : { addressData.province }</Text>
+                <Text position="relative" bottom="-40px" color="gray.400">รหัสไปรษณีย์ : { addressData.code }</Text>
+                <Text position="relative" bottom="-43px" color="gray.400">เบอร์โทรศัพท์ : { addressData.telNo }</Text>
               </Box>
             
               {/* สินค้า 1 */}
-              <Box borderBottom="1px solid #D3D3D3" w="350px" h="160px" position="relative" right="-18px" >
-                <Text position="relative" bottom="-15px" fontWeight="bold" letterSpacing="1px">สินค้า</Text>
-                <Flex position="relative" bottom="-30px" w="100%">
-                  <Box w="80px" h="80px" bg="gray.200" ></Box>
-                  <Box w="270px" h="80px" >
-                    <Text fontWeight="bold" letterSpacing="0.5px" position="relative" right="-5px">OFTAST ออฟตาสท์</Text>
-                    <Text position="relative" right="-5px" color="gray">ชาม,ขาว,15 ซม.</Text>
-                    <Flex>
-                    <Text position="relative" right="-5px" color="gray">จำนวน:</Text>
-                    <Text position="relative" right="-10px" fontWeight="bold" >1</Text>
-                    <Text position="relative" right="-15px" color="gray">รายการ</Text>
-                    </Flex>
-                  </Box>
-                </Flex>
-              </Box>
-              
-              {/* สินค้า 2 */}
-              <Box borderBottom="1px solid #D3D3D3" w="350px" h="135px" position="relative" right="-18px" >
-                <Flex position="relative" bottom="-30px" w="100%">
-                  <Box w="80px" h="80px" bg="gray.200" ></Box>
-                  <Box w="270px" h="80px" >
-                    <Text fontWeight="bold" letterSpacing="0.5px" position="relative" right="-5px">OFTAST ออฟตาสท์</Text>
-                    <Text position="relative" right="-5px" color="gray">ชาม,ขาว,15 ซม.</Text>
-                    <Flex>
-                    <Text position="relative" right="-5px" color="gray">จำนวน:</Text>
-                    <Text position="relative" right="-10px" fontWeight="bold" >1</Text>
-                    <Text position="relative" right="-15px" color="gray">รายการ</Text>
-                    </Flex>
-                  </Box>
-                </Flex>
-              </Box>
+              {cartData?.map((product, i)=>{
+                const urlImage = product.productImage ? bufferToImage(product.productImage.data, product.productImage.contentType) : "";
+                return <>
+                    <Box borderBottom="1px solid #D3D3D3" w="350px" h="160px" position="relative" right="-18px" >
+                        <Text hidden={i != 0} position="relative" bottom="-15px" fontWeight="bold" letterSpacing="1px">สินค้า</Text>
+                        <Flex position="relative" bottom="-30px" w="100%">
+                        <Box w="80px" h="80px" bg="gray.200" >
+                            <img src={urlImage} alt={product.productName} />
+                        </Box>
+                        <Box w="270px" h="80px" >
+                            <Text fontWeight="bold" letterSpacing="0.5px" position="relative" right="-5px">{product.productName}</Text>
+                            <Text position="relative" right="-5px" color="gray">{product.brandName}</Text>
+                            <Flex>
+                            <Text position="relative" right="-5px" color="gray">จำนวน:</Text>
+                            <Text position="relative" right="-10px" fontWeight="bold" >{product.amount}</Text>
+                            <Text position="relative" right="-15px" color="gray">รายการ</Text>
+                            </Flex>
+                        </Box>
+                        </Flex>
+                    </Box>
+                
+                </>
+              })
+                
+              }
 
             </Box>
         </Flex>
@@ -101,4 +107,4 @@ const paymentdeliverly = () => { // Change function name to start with an upperc
   );
 };
 
-export default paymentdeliverly;
+export default Paymentdeliverly;

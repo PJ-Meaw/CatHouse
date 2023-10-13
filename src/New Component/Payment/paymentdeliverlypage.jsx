@@ -1,15 +1,15 @@
 
 import NewHeader from '../HeaderNotLoggedIn';
-import Stript2 from './paymentdeliverly'
+import Paymentdeliverly from './paymentdeliverly'
 import Footer from '../NewFooter';
 
 
-const paymentpage =()=> {
+const Paymentpage =()=> {
   return (
 
     <div>
       <NewHeader/>
-        <Stript2/>
+      <Paymentdeliverly/>
       <Footer/>
       
     </div>
@@ -17,4 +17,4 @@ const paymentpage =()=> {
   );
 }
 
-export default paymentpage;
+export default Paymentpage;
