@@ -89,30 +89,30 @@ const AddWishlist = () => {
                                 <Text fontWeight="bold" position="relative" left="-85px" >ออกจากระบบ</Text>
                             </Button>
                             <Modal isOpen={isOpen} onClose={onClose} onOverlayClick={handleOverlayClick} closeOnEsc={false}>
-                            <ModalOverlay/>
-                            <ModalContent ref={modalRef} maxW="360px" w="90%" maxH="210px" h="90%" position="relative" top="200px" fontFamily={'Kanit, sans-serif'}>
-                                <ModalHeader position="relative" top="10px" align="center" justify="center">
-                                    <Box align="center" justify="center">
-                                        <Image src={logout} alt="logout" width="60px" height="60px"/>
-                                    </Box>
-                                </ModalHeader>
-                                <ModalBody align="center" justify="center">
-                                    <Text fontWeight="bold" fontSize="24" >คุณต้องการออกจากระบบ ?</Text>
-                                </ModalBody>
-                                <ModalFooter>
-                                    <Button onClick={onClose} w="90px" h="40px" borderRadius="8px" bg="white" border="none" p={0} style={{borderRadius: '5px', border: '1px solid #0F63E9'}} _hover={{ borderColor: 'white', boxShadow: '0 5px 10px rgba(0, 0, 0, .2)'  }} position="relative" top="0px" >
-                                        <Text color="#0F63E9" fontSize="14">ยกเลิก</Text>
-                                    </Button>
-                                    <Box w="10px" h="10px"  />
-                                    <Link to='/'>
-                                        <Button onClick={onOpen} w="90px" h="40px" borderRadius="8px" bg="#0F63E9" border="none" p={0} _hover={{ bg: '#0F63E9', boxShadow: '0 5px 10px rgba(0, 0, 0, .2)' }} position="relative" top="0px" >
-                                            <Text color="white" fontSize="14">ออกจากระบบ</Text>
+                                <ModalOverlay/>
+                                <ModalContent ref={modalRef} maxW="360px" w="90%" maxH="210px" h="90%" position="relative" top="200px" fontFamily={'Kanit, sans-serif'}>
+                                    <ModalHeader position="relative" top="10px" align="center" justify="center">
+                                        <Box align="center" justify="center">
+                                            <Image src={logout} alt="logout" width="60px" height="60px"/>
+                                        </Box>
+                                    </ModalHeader>
+                                    <ModalBody align="center" justify="center">
+                                        <Text fontWeight="bold" fontSize="24" >คุณต้องการออกจากระบบ ?</Text>
+                                    </ModalBody>
+                                    <ModalFooter>
+                                        <Button onClick={onClose} w="90px" h="40px" borderRadius="8px" bg="white" border="none" p={0} style={{borderRadius: '5px', border: '1px solid #0F63E9'}} _hover={{ borderColor: 'white', boxShadow: '0 5px 10px rgba(0, 0, 0, .2)'  }} position="relative" top="0px" >
+                                            <Text color="#0F63E9" fontSize="14">ยกเลิก</Text>
                                         </Button>
-                                    </Link>
-                                    
-                                </ModalFooter>
-                            </ModalContent>
-                                </Modal>
+                                        <Box w="10px" h="10px"  />
+                                        <Link to='/'>
+                                            <Button onClick={onOpen} w="90px" h="40px" borderRadius="8px" bg="#0F63E9" border="none" p={0} _hover={{ bg: '#0F63E9', boxShadow: '0 5px 10px rgba(0, 0, 0, .2)' }} position="relative" top="0px" >
+                                                <Text color="white" fontSize="14">ออกจากระบบ</Text>
+                                            </Button>
+                                        </Link>
+                                        
+                                    </ModalFooter>
+                                </ModalContent>
+                            </Modal>
                                 </h2>
                             </AccordionItem>
 

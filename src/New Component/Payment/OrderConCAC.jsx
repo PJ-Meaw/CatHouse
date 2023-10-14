@@ -8,8 +8,9 @@ import atmcard from './picpayment/atm-card.png';
 import { Input } from '@chakra-ui/react'
 import { Link } from 'react-router-dom';
 import { Checkbox, CheckboxGroup } from '@chakra-ui/react'
-
+import { useLocation } from 'react-router-dom';
 const OrderConSBT = () => { // Change function name to start with an uppercase letter
+const {totalPrice, cartData, addressData} = useLocation().state;
   return (
     <Box w='1260px' h='900px' position="relative" right="-320px" bottom="-20px" fontFamily={'Kanit, sans-serif'} >
         <Box w='1260px' h='830px' fontFamily={'Kanit, sans-serif'} border="1px solid #000">
@@ -32,33 +33,28 @@ const OrderConSBT = () => { // Change function name to start with an uppercase l
                 </Flex>
             </Box>
 
-            {/* สินค้าตัวที่ 1 */}
-            <Box w='1210px' h='50px' position="relative" bottom="-50px" right="-25px" borderBottom="1px solid black">
-                <Text position="relative" bottom="-15px" fontSize="14">สินค้าตัวที่ 1</Text>
-                <Flex position="relative" top="-6px" right="-465px" fontSize="14">
-                    <Text position="relative" right="-150px">LT.</Text>
-                    <Text position="relative" right="-250px">1,660</Text>
-                    <Text position="relative" right="-350px">1</Text>
-                    <Text position="relative" right="-450px">0</Text>
-                    <Text position="relative" right="-550px">1,660</Text>
-                </Flex>
-            </Box>
-
-            {/* สินค้าตัวที่ 2 */}
-            <Box w='1210px' h='50px' position="relative" bottom="-50px" right="-25px" borderBottom="1px solid black">
-                <Text position="relative" bottom="-15px" fontSize="14">สินค้าตัวที่ 2</Text>
-                <Flex position="relative" top="-6px" right="-465px" fontSize="14">
-                    <Text position="relative" right="-150px">3Y</Text>
-                    <Text position="relative" right="-250px">1,660</Text>
-                    <Text position="relative" right="-350px">1</Text>
-                    <Text position="relative" right="-450px">0</Text>
-                    <Text position="relative" right="-550px">1,660</Text>
-                </Flex>
-            </Box>
+            {
+                cartData?.map((product)=>{
+                    return <>
+                        <Box w='1210px' h='50px' position="relative" bottom="-50px" right="-25px" borderBottom="1px solid black">
+                            <Text position="relative" bottom="-15px" fontSize="14">{product.brandName} {product.productName}</Text>
+                            <Flex position="relative" top="-6px" right="-465px" fontSize="14">
+                                <Text position="relative" right="-150px">LT.</Text>
+                                <Text position="relative" right="-250px">{product.price}</Text>
+                                <Text position="relative" right="-350px">{product.amount}</Text>
+                                <Text position="relative" right="-450px">0</Text>
+                                <Text position="relative" right="-550px">{product.price * product.amount}</Text>
+                            </Flex>
+                        </Box>
+                    </> 
+                    
+    
+                })
+            }
 
                 <Flex>
                     <Text position="relative" bottom="-100px" right="-35px">สินค้า</Text>
-                    <Text position="relative" bottom="-100px" right="-382px">1,809บาท</Text>
+                    <Text position="relative" bottom="-100px" right="-382px">{Intl.NumberFormat("en-US").format(totalPrice)} บาท</Text>
                 </Flex>
                 <Flex>
                     <Text position="relative" bottom="-110px" right="-35px" >บริการ Click & Collect - Click & Collect Bang Yai</Text>
@@ -78,14 +74,14 @@ const OrderConSBT = () => { // Change function name to start with an uppercase l
                 
                 <Flex>
                     <Text position="relative" bottom="-170px" fontWeight="bold" letterSpacing="1px" right="-35px">ราคารวม</Text>
-                    <Text position="relative" bottom="-165px" right="-308px" fontWeight="bold" fontSize="32px">1,809</Text>
+                    <Text position="relative" bottom="-165px" right="-308px" fontWeight="bold" fontSize="32px">{Intl.NumberFormat("en-US").format(totalPrice)}</Text>
                     <Text position="relative" bottom="-170px" right="-310px" fontWeight="bold" letterSpacing="1px">บาท</Text>
                 </Flex>
             
             <Flex position="relative" right="-550px" top="-160px">
                 <Box w="200px" h="100px" bg="gray.200" position="relative" right="-25px" bottom="-80px">
                     <Text position="relative" right="-10px" bottom="-10px" fontWeight="bold">วิธีการจัดส่งสินค้า</Text>
-                    <Text position="relative" right="-10px" bottom="-10px" fontSize="14px">จัดส่งโดยรถบรรทุก</Text>
+                    <Text position="relative" right="-10px" bottom="-10px" fontSize="14px">รับหน้าร้าน</Text>
                 </Box>
 
                 <Box w="400px" h="100px" bg="gray.200" position="relative" right="-45px" bottom="-80px">
@@ -98,16 +94,18 @@ const OrderConSBT = () => { // Change function name to start with an uppercase l
             
             <Box w="500px" h="110px" bg="gray.200" position="relative" right="-575px" top="-60px">
                 <Text position="relative" right="-10px" bottom="-10px" fontWeight="bold">ที่อยู่จัดส่ง</Text>
-                <Text position="relative" right="-10px" bottom="-10px" fontSize="14px">ชื่อ-สกุล เบอร์โทรศัพท์</Text>
-                <Text position="relative" right="-10px" bottom="-10px" fontSize="14px">ที่อยู่บรรทัดที่ 1</Text>
+                <Text position="relative" right="-10px" bottom="-10px" fontSize="14px">{addressData.name} {addressData.telNo}</Text>
+                <Text position="relative" right="-10px" bottom="-10px" fontSize="14px">{addressData.address}</Text>
                 <Flex>
-                    <Text position="relative" right="-10px" bottom="-10px" fontSize="14px">ที่อยู่บรรทัดที่ 2</Text>
-                    <Text position="relative" right="-20px" bottom="-10px" fontSize="14px">รหัสไปรษณีย์</Text>
+                    <Text position="relative" right="-10px" bottom="-10px" fontSize="14px">{addressData.subDistrict} {addressData.district} {addressData.province}</Text>
+                    <Text position="relative" right="-20px" bottom="-10px" fontSize="14px">{addressData.code}</Text>
                 </Flex>
             </Box>
 
             <Flex position="relative" display="flex" justifyContent="center">
-                <Button w="150px" h="45px" position="relative" rounded="100px" bg="#0F63EA" color="white" _hover={{ bgColor: '#0058A3' }} left="-20px">กลับสู่หน้าหลัก</Button>
+                <Link to={"/"}>
+                    <Button w="150px" h="45px" position="relative" rounded="100px" bg="#0F63EA" color="white" _hover={{ bgColor: '#0058A3' }} left="-20px">กลับสู่หน้าหลัก</Button>
+                </Link>
                 <Button w="150px" h="45px" position="relative" rounded="100px" bg="#0F63EA" color="white" _hover={{ bgColor: '#0058A3' }} right="-20px">ดูรายการคำสั่งซื้อ</Button>
             </Flex> 
 

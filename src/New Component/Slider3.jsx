@@ -8,6 +8,8 @@ import LeftBlue from '../assets/LeftBlue.png';
 import Star from '../assets/star.png';
 
 import CardItemNotSale from './CardItemNotSale';
+import CardItemHasSale from './CardItemHasSale';
+import { bufferToImage } from '../helper/bufferToImage';
 
 const CustomPrevArrow2 = ({ onClick }) => (
     <div className="custom-arrow2 custom-prev-arrow2" onClick={onClick}>
@@ -21,13 +23,15 @@ const CustomPrevArrow2 = ({ onClick }) => (
     </div>
   );
 
-const Slider3 = () => {
+const Slider3 = ({newProductData}) => {
     const [currentSlide, setCurrentSlide] = useState(0);
 
   const settings = {
     infinite: true,
     speed: 100,
-    slidesToShow: 1,
+    slidesToShow: 4,
+    slidesToScroll: 4,
+    initialSlide: 0,
     
     afterChange: (current) => {
       setCurrentSlide(current);
@@ -49,7 +53,33 @@ const Slider3 = () => {
                     <Box width="20px" height="100%" />
                     <Box width="1030px" height="100%">
                         <Slider {...settings}>
-                            <Box>
+                        {
+                            newProductData?.map((product)=>{
+                            const urlImage = product.productImage ? bufferToImage(product.productImage.data, product.productImage.contentType) : undefined;
+                            // console.log("url :" +product.productDetail.productImage);
+                            return( 
+                                <>
+                                    <Box key={product._id}>
+                                        <Flex position="relative" >
+                                            <CardItemNotSale 
+                                                urlImage = {urlImage} 
+                                                brandName = {product.brandName} 
+                                                productName = {product.productName} 
+                                                price = {product.price} 
+                                            />
+                                            <Box width="20px" height="100%" borderRadius="md"/>
+                                            {/* <CardItemHasSale/>
+                                            <Box width="20px" height="100%" borderRadius="md"/>
+                                            <CardItemHasSale/>
+                                            <Box width="20px" height="100%" borderRadius="md"/>
+                                            <CardItemHasSale/> */}
+                                        </Flex>
+                                    </Box>
+                                </>
+                            );
+                            })
+                        }
+                            {/* <Box>
                                 <Flex position="relative" >
                                     <CardItemNotSale/>
                                     <Box width="20px" height="100%" borderRadius="md"/>
@@ -81,7 +111,7 @@ const Slider3 = () => {
                                     <Box width="20px" height="100%" borderRadius="md"/>
                                     <CardItemNotSale/>
                                 </Flex>
-                            </Box>
+                            </Box> */}
                         </Slider>
                      </Box>
                  </Flex>
