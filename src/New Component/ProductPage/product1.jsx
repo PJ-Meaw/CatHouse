@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import {
   Box,
   Flex,
@@ -9,12 +9,13 @@ import {
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
-  Button, // Import Button component
-  Input, // Import Input component
+  Button,
+  Image,
   Text
 } from '@chakra-ui/react';
 // Import the missing useDisclosure hook
 import { useDisclosure } from '@chakra-ui/react';
+import favorite from './favorite.png'
 
 const ProductDetail = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -122,6 +123,11 @@ const Product1 = () => {
   // Change function name to start with an uppercase letter
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
+  const [isBlue, setIsBlue] = useState(true);
+
+  const handleClick = () => {
+    setIsBlue(!isBlue);
+  };
 
   return (
     <Box w='1260px' h='1700px' position="relative" right="-320px" bottom="-10px" fontFamily={'Kanit, sans-serif'}>
@@ -143,7 +149,18 @@ const Product1 = () => {
             </Flex>
           </Box>
           <Box w='440px' h='610px'>
-            <Text>ANTON</Text>
+            <Flex>
+              <Text>ANTON</Text>
+              <Box p="1" w="20px" h="20px" position="relative" right="-270px"  >
+                  <Button w="40px" h="40px" borderRadius="50%" border="none" p={0} 
+                  onClick={handleClick}
+                  colorScheme={isBlue ? "white" : "red"}
+                  >
+                    <Image src={favorite} alt="favorite" w="55%" h="55%" borderRadius="50%" />
+                  </Button> 
+              </Box>
+            </Flex>
+            
             <Text fontSize="22">คีมตัดเหล็กและลวดสลิง ANTON</Text>
             <Text fontSize="20">390บาท</Text>
             <Box w='375px' h='250px' position="relative" bottom="-30px">
