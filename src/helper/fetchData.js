@@ -21,6 +21,18 @@ export function getBestSeller(){
     return axios.get(`${process.env.REACT_APP_URL_API}product/best_selling`)
 }
 
+export function getSuggestProduct(){
+    return axios.get(`${process.env.REACT_APP_URL_API}product/suggest_product`)
+}
+
+export function getNewestProduct(){
+    return axios.get(`${process.env.REACT_APP_URL_API}product/newest`)
+}
+
+export function getLikeProduct(){
+    return axios.post(`${process.env.REACT_APP_URL_API}product/getLikeProduct`, {email : Cookies.get('email')})
+}
+
 export function paymentCreditcard(productList, cardNumber, expirationDate, holderName, cvcCode, totalPrice, addressData){
     const FinalProductList = [];
     for(let product of productList){

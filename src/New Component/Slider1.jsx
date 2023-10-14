@@ -8,7 +8,7 @@ import LeftBlue from '../assets/LeftBlue.png';
 import BSeller from '../assets/Store2.png';
 
 import CardItemHasSale from './CardItemHasSale';
-
+import { bufferToImage } from '../helper/bufferToImage';
 const CustomPrevArrow2 = ({ onClick }) => (
     <div className="custom-arrow2 custom-prev-arrow2" onClick={onClick}>
       <img src={LeftBlue} alt="Previous Arrow" />
@@ -51,13 +51,14 @@ const Slider1 = ({bestSellerData}) => {
                         <Slider {...settings}>
                             {
                                 bestSellerData?.map((product)=>{
-                                    // console.log("url :" +product.productDetail.productImage);
+                                    const urlImage = product.productImage ? bufferToImage(product.productDetail.productImage.data, product.productDetail.productImage.contentType) : undefined;
+                                    console.log(urlImage);
                                     return( 
                                         <>
                                             <Box key={product._id}>
                                                 <Flex position="relative" >
                                                     <CardItemHasSale 
-                                                        urlImage = {product.productDetail.productImage} 
+                                                        urlImage = {urlImage} 
                                                         brandName = {product.productDetail.brandName} 
                                                         productName = {product.productDetail.productName} 
                                                         price = {product.productDetail.price} 

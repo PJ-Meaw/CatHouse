@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { Box, Text, Image } from '@chakra-ui/react';
 
 const CardItemHasSale = (props) => {
-    const {urlImage, brandName, productName, price} = props;
+    const {urlImage , brandName, productName, price} = props;
   return (
         <Link to={'Login'}>
             <Box width="240px" height="390px" borderRadius="15px" position="relative" border="1px solid #C3CCD4" _hover={{boxShadow: '0 0 20px rgba(0, 0, 0, 0.1)',}}>
@@ -21,8 +21,8 @@ const CardItemHasSale = (props) => {
                 </Box>
                 <Text fontFamily={'Kanit, sans-serif'} position="absolute" top="262px" left="12px" fontSize="14"> {brandName} </Text>
                 <Text fontFamily={'Kanit, sans-serif'} position="absolute" top="282px" left="12px" fontSize="14"> {productName} </Text>
-                <Text fontFamily={'Kanit, sans-serif'} position="absolute" top="310px" left="12px" fontSize="20" fontWeight="bold"> ฿{price * 90 / 100} </Text>
-                <Text fontFamily={'Kanit, sans-serif'} position="absolute" top="318px" left="82px" fontSize="12" color="#8996A0"> ฿{price} </Text>
+                <Text fontFamily={'Kanit, sans-serif'} position="absolute" top="310px" left="12px" fontSize="20" fontWeight="bold"> ฿{Intl.NumberFormat("en-US").format(price * 90 /100)} </Text>
+                <Text fontFamily={'Kanit, sans-serif'} position="absolute" top="318px" left="82px" fontSize="12" color="#8996A0"> ฿{Intl.NumberFormat("en-US").format(price)} </Text>
                 <Text fontFamily={'Kanit, sans-serif'} position="absolute" top="302px" left="82px" fontSize="20" color="#8996A0"> ____ </Text>
                 <Box position="absolute" top="358px" left="3" width="50px" height="18px" bg="#F2F3F5" borderRadius="8px">
                     <Image src={delivery} alt="delivery" width="30%" height="80%" position="absolute" top="2px" left="3.5px" />

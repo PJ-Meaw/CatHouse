@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useContext } from 'react';
 import {
     Accordion,
     AccordionItem,
@@ -10,11 +10,26 @@ import {
 import picprofile from '../assets/profile2.png'
 import { Link } from 'react-router-dom';
 import logout from '../assets/exit.png'
-
+import { Context } from '../context/context';
+import { getLikeProduct } from '../helper/fetchData';
+import { bufferToImage } from '../helper/bufferToImage';
+import CardItemNotSale from '../New Component/CardItemNotSale'
 const Orderlist = () => {
     const [isOpen, setIsOpen] = useState(false);
     const modalRef = useRef(null);
-  
+    const {userData, setUserData} = useContext(Context);
+    const [likeProductData, setLikeProductData] = useState([])
+    useEffect(()=>{
+        Promise.all([getLikeProduct()])
+        .then(([resLikeProduct])=>{
+            if(resLikeProduct.data.status){
+                console.log(resLikeProduct.data.productDetail)
+                setLikeProductData(resLikeProduct.data.productDetail)
+            }else{
+                console.warn(resLikeProduct.data.message);
+            }
+        })
+    },[])
     const onOpen = () => {
       setIsOpen(true);
     };
@@ -121,15 +136,35 @@ const Orderlist = () => {
                         <Text fontWeight="bold" fontSize="18" position="relative" right="-10px" >รายการสินค้าที่สนใจ</Text>
                         <Text color="#757575" fontSize="12" position="relative" right="-10px" bottom="-5px">พื้นที่รวบรวมสินค้าที่ชอบจาก Cat House สู่มือคุณ</Text>
                     </Box>
-                    <Box align="center" justify="center" position="relative" top="100px">
-                        <Text color="#808080" fontSize="14">ไม่มีรายการสินค้าที่สนใจ</Text>
-                        <Link to='/WLL' >
-                            <Button onClick={onOpen} w="160px" h="40px" position="relative" top="10px" borderRadius="8px" bg="#0F63E9" border="none" p={0} _hover={{ bg: '#0F63E9', boxShadow: '0 5px 10px rgba(0, 0, 0, .1)'  }}>
-                                <Text color="white" fontSize="14" position="relative" right="-3px">เลือกสินค้าต่อ</Text>
-                            </Button>
-                        </Link>
-                    </Box>
-                    
+                    {
+                        likeProductData?.length == 0 ? 
+                        <Box align="center" justify="center" position="relative" top="100px">
+                            <Text color="#808080" fontSize="14">ไม่มีรายการสินค้าที่สนใจ</Text>
+                            <Link to='/WLL'>
+                                <Button onClick={onOpen} w="160px" h="40px" position="relative" top="10px" borderRadius="8px" bg="#0F63E9" border="none" p={0} _hover={{ bg: '#0F63E9', boxShadow: '0 5px 10px rgba(0, 0, 0, .1)'  }}>
+                                    <Text color="white" fontSize="14" position="relative" right="-3px">เลือกสินค้าต่อ</Text>
+                                </Button>
+                            </Link> 
+                        </Box> :
+                        <Box position="relative" right="-20px">
+                            <Flex gap="10px">
+                                {
+                                    likeProductData?.map((product)=>{
+                                        const urlImage = product.productImage ? bufferToImage(product.productImage.data, product.productImage.contentType) : undefined;
+                                        return <>
+                                            <CardItemNotSale
+                                                urlImage = {urlImage} 
+                                                brandName = {product.brandName} 
+                                                productName = {product.productName} 
+                                                price = {product.price}
+                                                // islike = {true}
+                                            />
+                                        </>
+                                    })
+                                }
+                            </Flex> 
+                        </Box>
+                    }
                 </Box>
             </Flex>
         </Box>
