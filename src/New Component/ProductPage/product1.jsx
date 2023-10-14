@@ -11,32 +11,50 @@ import {
   DrawerCloseButton,
   Button, // Import Button component
   Input, // Import Input component
-  Text
+  Text,
+  Image,
 } from '@chakra-ui/react';
 // Import the missing useDisclosure hook
 import { useDisclosure } from '@chakra-ui/react';
+import { testGetImage } from '../../helper/fetchData';
+import { useState, useEffect } from 'react';
 
 const ProductDetail = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
 
-    return (
-        <>
-        <Button ref={btnRef} colorScheme='white' color="black" onClick={onOpen} w='1030px' h='115px' borderBottom="1px" borderColor="#DDDDDD" rounded="none" position="relative" top="-800px">
-            <Text fontSize="24" position="relative" left="-430px">รายละเอียดสินค้า</Text>
-        </Button>
-        <Drawer
-          isOpen={isOpen}
-          placement='right'
-          onClose={onClose}
-          finalFocusRef={btnRef}
-          size="md"
-          
-        >
-          <DrawerOverlay />
-          <DrawerContent>
-            <DrawerCloseButton />
-            <DrawerHeader fontFamily={'Kanit, sans-serif'}>รายละเอียดสินค้า</DrawerHeader>
+  return (
+    <>
+      <Button
+        ref={btnRef}
+        colorScheme="white"
+        color="black"
+        onClick={onOpen}
+        w="1030px"
+        h="115px"
+        borderBottom="1px"
+        borderColor="#DDDDDD"
+        rounded="none"
+        position="relative"
+        top="-800px"
+      >
+        <Text fontSize="24" position="relative" left="-430px">
+          รายละเอียดสินค้า
+        </Text>
+      </Button>
+      <Drawer
+        isOpen={isOpen}
+        placement="right"
+        onClose={onClose}
+        finalFocusRef={btnRef}
+        size="md"
+      >
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerCloseButton />
+          <DrawerHeader fontFamily={'Kanit, sans-serif'}>
+            รายละเอียดสินค้า
+          </DrawerHeader>
 
           <DrawerBody fontFamily={'Kanit, sans-serif'}>
             <Text fontWeight="bold">คีมตัดเหล็กและลวดสลิง ANTON</Text>
@@ -78,23 +96,38 @@ const ProductSize = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
 
-    return (
-        <>
-        <Button ref={btnRef} colorScheme='white' color="black" onClick={onOpen} w='1030px' h='115px' borderBottom="1px" borderColor="#DDDDDD" rounded="none" position="relative" top="-800px">
-            <Text fontSize="24" position="relative" left="-450px">ข้อมูลจำเพาะ</Text>
-        </Button>
-        <Drawer
-          isOpen={isOpen}
-          placement='right'
-          onClose={onClose}
-          finalFocusRef={btnRef}
-          size="md"
-          
-        >
-          <DrawerOverlay />
-          <DrawerContent>
-            <DrawerCloseButton />
-            <DrawerHeader fontFamily={'Kanit, sans-serif'}>ข้อมูลจำเพาะ</DrawerHeader>
+  return (
+    <>
+      <Button
+        ref={btnRef}
+        colorScheme="white"
+        color="black"
+        onClick={onOpen}
+        w="1030px"
+        h="115px"
+        borderBottom="1px"
+        borderColor="#DDDDDD"
+        rounded="none"
+        position="relative"
+        top="-800px"
+      >
+        <Text fontSize="24" position="relative" left="-450px">
+          ข้อมูลจำเพาะ
+        </Text>
+      </Button>
+      <Drawer
+        isOpen={isOpen}
+        placement="right"
+        onClose={onClose}
+        finalFocusRef={btnRef}
+        size="md"
+      >
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerCloseButton />
+          <DrawerHeader fontFamily={'Kanit, sans-serif'}>
+            ข้อมูลจำเพาะ
+          </DrawerHeader>
 
           <DrawerBody fontFamily={'Kanit, sans-serif'}>
             <Text fontWeight="bold">แบรนด์</Text>
@@ -123,36 +156,83 @@ const Product1 = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef();
 
+  const [image, setImage] = useState('');
+
+  useEffect(() => {
+    testGetImage().then((res) => {
+      const base64 = 'data:image/jpeg;base64,' + res.data.getImage;
+      setImage(base64);
+    });
+  }, []);
+
   return (
-    <Box w='1260px' h='1700px' position="relative" right="-320px" bottom="-10px" fontFamily={'Kanit, sans-serif'}>
-      <Box w='1260px' h='50px'></Box>
-      <Box w='1260px' h='2100px'>
+    <Box
+      w="1260px"
+      h="1700px"
+      position="relative"
+      right="-320px"
+      bottom="-10px"
+      fontFamily={'Kanit, sans-serif'}
+    >
+      <Box w="1260px" h="50px"></Box>
+      <Box w="1260px" h="2100px">
         <Flex>
           <Box w="1040px" h="2100px">
             <Flex>
-              <Box w='400px' h='400px' bg="#DDDDDD"></Box>
-              <Box w='400px' h='400px' bg="#DDDDDD" position="relative" right="-20px"></Box>
+              <Image src={image} w="400px" h="400px" bg="#DDDDDD"></Image>
+              <Box
+                w="400px"
+                h="400px"
+                bg="#DDDDDD"
+                position="relative"
+                right="-20px"
+              ></Box>
             </Flex>
             <Flex position="relative" bottom="-20px">
-              <Box w='400px' h='400px' bg="#DDDDDD"></Box>
-              <Box w='400px' h='400px' bg="#DDDDDD" position="relative" right="-20px"></Box>
+              <Box w="400px" h="400px" bg="#DDDDDD"></Box>
+              <Box
+                w="400px"
+                h="400px"
+                bg="#DDDDDD"
+                position="relative"
+                right="-20px"
+              ></Box>
             </Flex>
             <Flex position="relative" bottom="-40px">
-              <Box w='400px' h='400px' bg="#DDDDDD"></Box>
-              <Box w='400px' h='400px' bg="#DDDDDD" position="relative" right="-20px"></Box>
+              <Box w="400px" h="400px" bg="#DDDDDD"></Box>
+              <Box
+                w="400px"
+                h="400px"
+                bg="#DDDDDD"
+                position="relative"
+                right="-20px"
+              ></Box>
             </Flex>
           </Box>
-          <Box w='440px' h='610px'>
+          <Box w="440px" h="610px">
             <Text>ANTON</Text>
             <Text fontSize="22">คีมตัดเหล็กและลวดสลิง ANTON</Text>
             <Text fontSize="20">390บาท</Text>
-            <Box w='375px' h='250px' position="relative" bottom="-30px">
+            <Box w="375px" h="250px" position="relative" bottom="-30px">
               <Text fontSize="18px">1.เหมาะสำหรับตัดลวด และตัดแผ่นพลาสติก</Text>
-              <Text fontSize="18px">2.ปากคีมชุบแข็ง ทนทาน คมตัดได้ไม่กินชิ้นงาน</Text>
+              <Text fontSize="18px">
+                2.ปากคีมชุบแข็ง ทนทาน คมตัดได้ไม่กินชิ้นงาน
+              </Text>
               <Text fontSize="18px">3.ด้ามจับยางถนัดกระชับมือ ใช้งานสะดวก</Text>
-              <Button w="370px" h="60px" position="relative" right="-2px" bottom="-30px" rounded="100px" bg="#0F63EA" color="white" _hover={{ bgColor: '#0058A3' }}>เพิ่มสินค้าลงตะกร้า</Button>
+              <Button
+                w="370px"
+                h="60px"
+                position="relative"
+                right="-2px"
+                bottom="-30px"
+                rounded="100px"
+                bg="#0F63EA"
+                color="white"
+                _hover={{ bgColor: '#0058A3' }}
+              >
+                เพิ่มสินค้าลงตะกร้า
+              </Button>
             </Box>
-            
           </Box>
         </Flex>
       </Box>
