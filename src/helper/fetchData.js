@@ -16,3 +16,28 @@ export function updateAmountCart_API(productId, amount){
 export function deleteProductCart_API(productId){
     return axios.post(`${process.env.REACT_APP_URL_API}cart/deleteCart`,{email : Cookies.get('email'), productId : productId})
 }
+
+export function getBestSeller(){
+    return axios.get(`${process.env.REACT_APP_URL_API}product/best_selling`)
+}
+
+export function paymentCreditcard(productList, cardNumber, expirationDate, holderName, cvcCode, totalPrice, addressData){
+    const FinalProductList = [];
+    for(let product of productList){
+        FinalProductList.push({
+            productId : product._id,
+            quantity : product.amount,
+            merchantEmail : product.merchantEmail
+        })
+    }
+    return axios.post(`${process.env.REACT_APP_URL_API}payment/credit_card`, {
+        email : Cookies.get('email'), 
+        productList : FinalProductList,
+        cardNumber: cardNumber,
+        expirationDate : expirationDate,
+        holderName : holderName,
+        cvcCode : cvcCode,
+        amount : totalPrice,
+        address : addressData
+    })
+}

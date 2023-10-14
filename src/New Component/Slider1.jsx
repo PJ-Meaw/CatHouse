@@ -21,13 +21,14 @@ const CustomPrevArrow2 = ({ onClick }) => (
     </div>
   );
 
-const Slider1 = () => {
+const Slider1 = ({bestSellerData}) => {
     const [currentSlide, setCurrentSlide] = useState(0);
-
-  const settings = {
+    const settings = {
     infinite: true,
     speed: 100,
-    slidesToShow: 1,
+    slidesToShow: 4,
+    slidesToScroll: 4,
+    initialSlide: 0,
     
     afterChange: (current) => {
       setCurrentSlide(current);
@@ -48,39 +49,31 @@ const Slider1 = () => {
                     <Box width="20px" height="100%" />
                     <Box width="1030px" height="100%">
                         <Slider {...settings}>
-                            <Box>
-                                <Flex position="relative" >
-                                    <CardItemHasSale/>
-                                    <Box width="20px" height="100%" borderRadius="md"/>
-                                    <CardItemHasSale/>
-                                    <Box width="20px" height="100%" borderRadius="md"/>
-                                    <CardItemHasSale/>
-                                    <Box width="20px" height="100%" borderRadius="md"/>
-                                    <CardItemHasSale/>
-                                </Flex>
-                            </Box>
-                            <Box>
-                                <Flex position="relative">
-                                    <CardItemHasSale/>
-                                    <Box width="20px" height="100%" borderRadius="md"/>
-                                    <CardItemHasSale/>
-                                    <Box width="20px" height="100%" borderRadius="md"/>
-                                    <CardItemHasSale/>
-                                    <Box width="20px" height="100%" borderRadius="md"/>
-                                    <CardItemHasSale/>
-                                </Flex>
-                            </Box>
-                            <Box>
-                                <Flex position="relative">
-                                    <CardItemHasSale/>
-                                    <Box width="20px" height="100%" borderRadius="md"/>
-                                    <CardItemHasSale/>
-                                    <Box width="20px" height="100%" borderRadius="md"/>
-                                    <CardItemHasSale/>
-                                    <Box width="20px" height="100%" borderRadius="md"/>
-                                    <CardItemHasSale/>
-                                </Flex>
-                            </Box>
+                            {
+                                bestSellerData?.map((product)=>{
+                                    // console.log("url :" +product.productDetail.productImage);
+                                    return( 
+                                        <>
+                                            <Box key={product._id}>
+                                                <Flex position="relative" >
+                                                    <CardItemHasSale 
+                                                        urlImage = {product.productDetail.productImage} 
+                                                        brandName = {product.productDetail.brandName} 
+                                                        productName = {product.productDetail.productName} 
+                                                        price = {product.productDetail.price} 
+                                                    />
+                                                    <Box width="20px" height="100%" borderRadius="md"/>
+                                                    {/* <CardItemHasSale/>
+                                                    <Box width="20px" height="100%" borderRadius="md"/>
+                                                    <CardItemHasSale/>
+                                                    <Box width="20px" height="100%" borderRadius="md"/>
+                                                    <CardItemHasSale/> */}
+                                                </Flex>
+                                            </Box>
+                                        </>
+                                    );
+                                })
+                            }
                         </Slider>
                      </Box>
                  </Flex>
