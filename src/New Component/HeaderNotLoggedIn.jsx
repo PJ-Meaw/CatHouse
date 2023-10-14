@@ -24,7 +24,7 @@ import { Tab, FormControl,
   InputGroup, InputLeftElement, Image,Box } from '@chakra-ui/react';
 import { Checkbox, CheckboxGroup } from '@chakra-ui/react'
 import HeaderLoggedIn from './HeaderLoggedIn';
-
+import Cookies from "js-cookie";
   const SearchButtonWithModal = () => {
     const [isOpen, setIsOpen] = useState(false);
     const modalRef = useRef(null);
@@ -371,8 +371,9 @@ import HeaderLoggedIn from './HeaderLoggedIn';
   export const HeaderNotLoggedIn = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const LinkWithoutUnderline = {
-      textDecoration: 'none',
+        textDecoration: 'none',
     };
+    const [auth, setAuth] = useState(false)
     useEffect(() => {
       const handleScroll = () => {
         if (window.pageYOffset > 0) {
@@ -383,15 +384,18 @@ import HeaderLoggedIn from './HeaderLoggedIn';
       };
   
       window.addEventListener('scroll', handleScroll);
-  
+      // set Authen
+      if(Cookies.get('email')){
+        console.log("Found Email");
+        setAuth(true);
+      }
       return () => {
         window.removeEventListener('scroll', handleScroll);
       };
     }, []);
 
-    const Auth = false;
     return ( <>
-    { Auth ? <HeaderLoggedIn/> : 
+    { auth ? <HeaderLoggedIn/> : 
     <Flex as="header" align="center" py={2} px={320} borderBottom="1px" borderColor="gray.200" position={isScrolled ? 'fixed' : 'static'} top={isScrolled ? '0' : 'auto'} bg={isScrolled ? 'white' : 'transparent'} boxShadow={isScrolled ? '0px 1px 6px rgba(0, 0, 0, 0.1)' : 'none'} transition="all" zIndex="999">
       <Box w="5000px">
       <Flex align="center">
@@ -500,7 +504,7 @@ import HeaderLoggedIn from './HeaderLoggedIn';
 
         <SearchButtonWithModal />
         
-        <Box p="1">
+        {/* <Box p="1">
           <Link to={'Login'}>
             <Button w="40px" h="40px" borderRadius="50%" bg="white" border="none" p={0} _hover={{ bg: 'gray.200' }}>
               <Image src={favorite} alt="favorite" w="55%" h="55%" borderRadius="50%" />
@@ -514,7 +518,7 @@ import HeaderLoggedIn from './HeaderLoggedIn';
               <Image src={cartlogo} alt="cartlogo" w="65%" h="65%" borderRadius="50%" />
             </Button>
           </Link>
-        </Box>
+        </Box> */}
 
         
         <LoginButtonWithModal/>

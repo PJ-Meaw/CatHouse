@@ -13,6 +13,7 @@ import { Context } from '../../context/context';
 import Cookies from 'js-cookie';
 import { fetchUserData_API, fetchDetailCart_API, updateAmountCart_API, deleteProductCart_API } from '../../helper/fetchData';
 import { setObjUserData } from '../../helper/setobjData';
+import { bufferToImage } from '../../helper/bufferToImage';
 
 const Cart = () => { // Change function name to start with an uppercase letter
     const {userData, setUserData} = useContext(Context);
@@ -39,7 +40,7 @@ const Cart = () => { // Change function name to start with an uppercase letter
                 }, 0);
                 setTotalPrice(result)
             }else{
-                console.warn(resUserData.status);
+                console.warn("fetch error");
             }
         })
     },[])
@@ -89,15 +90,16 @@ const Cart = () => { // Change function name to start with an uppercase letter
         <Box>
         {
             cartData?.map((product)=>{
-                // setTest((test )=>test + product?.price )
-                // totalPrice += (product.price * product.amount);
+                const urlImage = product.productImage ? bufferToImage(product.productImage.data, product.productImage.contentType) : "";
                 return (
                     <Box w='705px' h='200px' borderTop="1px solid #D3D3D3" key={product.productId}>
                         <Box w='100px' h='25px'/>
                         <Flex>
-                            <Box w='150px' h='150px' bg="gray.200" position="relative" right="-10px"></Box>
+                            <Box w='150px' h='150px' bg="gray.200" position="relative" right="-10px">
+                                <img src={urlImage} alt={product.productName} />
+                            </Box>
                             <Box w='240px' h='150px'  position="relative" right="-50px">
-                                <Text>{product.productName}</Text>
+                                <Text>{product.brandName} {product.productName}</Text>
                                 <Text color="gray">จาน, ผิวด้าน สีไลท์เทอร์ควอยซ์</Text>
                                 <Text color="gray">26 ซม.</Text>
                                 <NumberInput size='md' maxW={99} defaultValue={product.amount} max={product.quantity} min={1} position="relative" bottom="-35px" onChange={(value)=> {fetchUpdateAmount(product.productId,Number(value))}}>
@@ -164,8 +166,9 @@ const Cart = () => { // Change function name to start with an uppercase letter
             </Flex>
           </Box>
           <Text position="relative" bottom="-10px" color="#9AA5B8" fontSize="14px">เมื่อคลิก "ชำระเงิน" แสดงว่าคุณยอมรับ นโยบายความเป็นส่วนตัว</Text>
-          <Link to="/PaymentPage">
-          <Button w="500px" h="60px" position="relative" right="-2px" bottom="-20px" rounded="100px" bg="#0F63EA" color="white" _hover={{ bgColor: '#0058A3' }} onClick={()=>console.log(cartData.length)}>ชำระเงิน</Button></Link>
+          <Link to="/PaymentPage" state={{totalPrice : totalPrice, cartData : cartData}}>
+            <Button w="500px" h="60px" position="relative" right="-2px" bottom="-20px" rounded="100px" bg="#0F63EA" color="white" _hover={{ bgColor: '#0058A3' }} >ชำระเงิน</Button>
+          </Link>
           </Box>
         </Flex>
         </Flex>

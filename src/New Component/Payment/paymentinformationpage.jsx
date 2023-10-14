@@ -1,18 +1,18 @@
 
 import NewHeader from '../HeaderNotLoggedIn';
-import Stript from './paymentinformation'
+import Paymentinformation from './paymentinformation'
 import Footer from '../NewFooter';
 import { useContext, useEffect } from 'react';
 import { Context } from '../../context/context'
+import { useLocation } from 'react-router-dom'
 
 const Paymentpage = () => {
     const {userData, setUserData} = useContext(Context)
-    console.log(userData)
+    let { totalPrice } = useLocation().state;
   return (
     <div>
-        {userData?.username}
       <NewHeader/>
-        <Stript/>
+      <Paymentinformation/>
       <Footer/>
       
     </div>

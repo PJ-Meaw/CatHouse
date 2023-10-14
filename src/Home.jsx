@@ -15,42 +15,32 @@ import Footer from './New Component/NewFooter';
 import CardItemHasSale from './New Component/CardItemHasSale';
 import CardItemNotSale from './New Component/CardItemNotSale';
 import { Card, CardHeader, CardBody, CardFooter, Text } from '@chakra-ui/react';
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Context } from './context/context';
 import Cookies from 'js-cookie';
 import axios from 'axios';
-
+import { setObjUserData } from './helper/setobjData';
+import { fetchUserData_API, getBestSeller } from './helper/fetchData';
 const App = () => {
   const { userData, setUserData } = useContext(Context);
-  // Cookies.set('email',"pathinya@gmail.com");
+  Cookies.set('email', 'pathinya@gmail.com');
+  const [bestSellerData, setBestSellerData] = useState([]);
+
   useEffect(() => {
-    console.log(userData);
-    axios
-      .post(`${process.env.REACT_APP_URL_API}user/get_user`, {
-        email: Cookies.get('email'),
-      })
-      .then((res) => {
-        if (res.data.status) {
-          const objData = {
-            _id: res.data.user._id,
-            email: res.data.user.email,
-            telNo: res.data.user.telNo,
-            address: res.data.user.address,
-            role: res.data.user.role,
-            likeProduct: res.data.user.likeProduct,
-            cart: res.data.user.cart,
-            waitingPayment: res.data.user.waitingPayment,
-            transportDetail: res.data.user.transportDetail,
-            hashedCode: res.data.user.hashedCode,
-          };
-          const json = JSON.stringify(objData);
+    Promise.all([fetchUserData_API(), getBestSeller()]).then(
+      ([resUserData, resBestSeller]) => {
+        if (resUserData.data.status && resBestSeller.data.status) {
+          const objUserData = setObjUserData(resUserData.data.user);
+          const json = JSON.stringify(objUserData);
           Cookies.set('userData', json);
-          setUserData(objData);
-          console.log(userData?.email);
+          setUserData(objUserData);
+          setBestSellerData(resBestSeller.data.bestSellerProduct);
+          // console.log(resBestSeller.data);
         } else {
-          console.warn(res.status);
+          console.warn('fetch error');
         }
-      });
+      }
+    );
   }, []);
 
   return (
@@ -61,7 +51,7 @@ const App = () => {
       <Slider3 />
       <ShopBrand />
       <Article />
-      <Slider1 />
+      <Slider1 bestSellerData={bestSellerData} />
       <Slider2 />
       <Footer />
 

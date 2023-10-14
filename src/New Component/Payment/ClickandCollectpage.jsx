@@ -1,6 +1,6 @@
 
 import NewHeader from '../HeaderNotLoggedIn';
-import Stript3 from './ClickandCollect';
+import ClickandCollect from './ClickandCollect';
 import Footer from '../NewFooter';
 
 
@@ -9,7 +9,7 @@ const paymentpage =()=> {
 
     <div>
       <NewHeader/>
-        <Stript3/>
+        <ClickandCollect/>
       <Footer/>
       
     </div>
