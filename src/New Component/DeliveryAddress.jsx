@@ -27,16 +27,27 @@ import homelocation from '../assets/homelocation.png';
 import add from '../assets/add.png';
 import { Link } from 'react-router-dom';
 import logout from '../assets/exit.png';
+import api from '../service/userService';
+import Swal from 'sweetalert2';
+import Cookies from 'js-cookie';
 
-const AddAddress = () => {
+const AddAddress = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const modalRef = useRef(null);
+  const [fullName, setFullName] = useState(null);
+  const [telNo, setTelNo] = useState(null);
+  const [address, setAddress] = useState(null);
+  const [district, setDistrict] = useState(null);
+  const [subDistrict, setSubDistrict] = useState(null);
+  const [code, setCode] = useState(0);
+  const [province, setProvince] = useState(null);
 
   const onOpen = () => {
     setIsOpen(true);
   };
 
   const onClose = () => {
+    clearAddressState();
     setIsOpen(false);
   };
 
@@ -44,6 +55,92 @@ const AddAddress = () => {
     if (event.target === event.currentTarget) {
       onClose();
     }
+  };
+
+  const clearAddressState = () => {
+    setFullName(null);
+    setTelNo(null);
+    setAddress(null);
+    setDistrict(null);
+    setSubDistrict(null);
+    setCode(null);
+    setProvince(null);
+  };
+
+  const validateFields = () => {
+    if (!fullName) {
+      alert('please fill fullname!.');
+      return false;
+    }
+    if (!telNo) {
+      alert('please fill phone number!.');
+      return false;
+    }
+    if (!address) {
+      alert('please fill address info!.');
+      return false;
+    }
+    if (!district) {
+      alert('please fill district!.');
+      return false;
+    }
+    if (!subDistrict) {
+      alert('please fill sub district!.');
+      return false;
+    }
+    if (!code) {
+      alert('please fill province code!.');
+      return false;
+    }
+    if (!province) {
+      alert('please fill province name!.');
+      return false;
+    }
+
+    return true;
+  };
+
+  const handleAddAddress = () => {
+    if (!validateFields()) {
+      return;
+    }
+
+    const fullnameSplit = fullName.split(' ');
+    const firstName = fullnameSplit[0];
+    const lastName = fullnameSplit[1];
+
+    if (!firstName || !lastName) {
+      alert(
+        `please fill your name by this format 'firstName LastName'\n ex. 'Tom Disney'`
+      );
+      return;
+    }
+
+    const dataReq = {
+      email: props.user.email,
+      updateObj: {
+        address,
+        code,
+        district,
+        firstName,
+        lastName,
+        province,
+        subDistrict,
+        telNo,
+      },
+    };
+
+    api.addNewAddress(dataReq).then((res) => {
+      if (res.data.status) {
+        Cookies.set('userData', JSON.stringify(res.data.user));
+        props.setUser(res.data.user);
+      }
+
+      Swal.fire(res.data.message);
+      onClose();
+    });
+
+    clearAddressState();
   };
 
   return (
@@ -122,6 +219,7 @@ const AddAddress = () => {
                         placeholder="ชื่อ - นามสกุล"
                         focusBorderColor="#0F63E9"
                         _hover={{ borderColor: '#0F63E9' }}
+                        onChange={(e) => setFullName(e.target.value)}
                       />
                     </InputGroup>
                   </Box>
@@ -134,6 +232,7 @@ const AddAddress = () => {
                         placeholder="หมายเลขโทรศัพท์"
                         focusBorderColor="#0F63E9"
                         _hover={{ borderColor: '#0F63E9' }}
+                        onChange={(e) => setTelNo(e.target.value)}
                       />
                     </InputGroup>
                   </Box>
@@ -151,6 +250,7 @@ const AddAddress = () => {
                     placeholder="ที่อยู่"
                     focusBorderColor="#0F63E9"
                     _hover={{ borderColor: '#0F63E9' }}
+                    onChange={(e) => setAddress(e.target.value)}
                   />
                 </InputGroup>
               </Box>
@@ -167,6 +267,7 @@ const AddAddress = () => {
                         placeholder="แขวง/ตำบล"
                         focusBorderColor="#0F63E9"
                         _hover={{ borderColor: '#0F63E9' }}
+                        onChange={(e) => setSubDistrict(e.target.value)}
                       />
                     </InputGroup>
                   </Box>
@@ -179,6 +280,7 @@ const AddAddress = () => {
                         placeholder="อำเภอ/เขต"
                         focusBorderColor="#0F63E9"
                         _hover={{ borderColor: '#0F63E9' }}
+                        onChange={(e) => setDistrict(e.target.value)}
                       />
                     </InputGroup>
                   </Box>
@@ -197,6 +299,7 @@ const AddAddress = () => {
                         placeholder="จังหวัด"
                         focusBorderColor="#0F63E9"
                         _hover={{ borderColor: '#0F63E9' }}
+                        onChange={(e) => setProvince(e.target.value)}
                       />
                     </InputGroup>
                   </Box>
@@ -209,6 +312,7 @@ const AddAddress = () => {
                         placeholder="รหัสไปรษณีย์"
                         focusBorderColor="#0F63E9"
                         _hover={{ borderColor: '#0F63E9' }}
+                        onChange={(e) => setCode(e.target.value)}
                       />
                     </InputGroup>
                   </Box>
@@ -239,7 +343,7 @@ const AddAddress = () => {
             </Button>
             <Box w="10px" h="10px" />
             <Button
-              onClick={onOpen}
+              onClick={handleAddAddress}
               w="184px"
               h="40px"
               borderRadius="8px"
@@ -264,7 +368,7 @@ const AddAddress = () => {
   );
 };
 
-const DeliveryAddress = () => {
+const DeliveryAddress = (props) => {
   const [isOpen, setIsOpen] = useState(false);
   const modalRef = useRef(null);
 
@@ -281,6 +385,7 @@ const DeliveryAddress = () => {
       onClose();
     }
   };
+
   return (
     <Flex
       w="100%"
@@ -556,7 +661,7 @@ const DeliveryAddress = () => {
               <Text color="#757575" position="relative" top="-5px">
                 ไม่มีข้อมูลที่อยู่จัดส่งสินค้า
               </Text>
-              <AddAddress />
+              <AddAddress setUser={props.setUser} user={props.user} />
             </Box>
           </Box>
         </Flex>
