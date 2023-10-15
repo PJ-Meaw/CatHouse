@@ -114,8 +114,8 @@ import { Context } from '../context/context';
   const LoginButtonWithEmail = () => {
     const [isOpen, setIsOpen] = useState(false);
     const modalRef = useRef(null);
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    const [email, setEmail] = useState("pathinya@gmail.com");
+    const [password, setPassword] = useState("1234");
     const [email_register, setEmail_register] = useState("");
     const [password_register, setPassword_register] = useState("");
     const [confirm_password_register, setConfirm_password_register] = useState("");
@@ -184,7 +184,7 @@ import { Context } from '../context/context';
                       <Field name='email'>
                         {({ field, form }) => (
                           <FormControl isInvalid={form.errors.name && form.touched.name}>
-                            <Input {...field} placeholder='อีเมล' onChange={(e)=>setEmail(e.target.value)}/>
+                            <Input {...field} placeholder='อีเมล' onChange={(e)=>setEmail(e.target.value)} value={email}/>
                             <FormErrorMessage>{form.errors.name}</FormErrorMessage>
                           </FormControl>
                         )}
@@ -193,7 +193,7 @@ import { Context } from '../context/context';
                       <Field name='password'>
                         {({ field, form }) => (
                           <FormControl isInvalid={form.errors.name && form.touched.name}>
-                            <Input {...field} placeholder='รหัสผ่าน' onChange={(e)=>setPassword(e.target.value)}/>
+                            <Input {...field} placeholder='รหัสผ่าน' onChange={(e)=>setPassword(e.target.value)} value={password}/>
                             <FormErrorMessage>{form.errors.name}</FormErrorMessage>
                           </FormControl>
                         )}

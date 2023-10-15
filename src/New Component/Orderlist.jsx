@@ -1,25 +1,33 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import {
     Accordion,
     AccordionItem,
     AccordionButton,
     AccordionPanel,
     AccordionIcon,
-    Box,Flex,Text,Image,TabIndicator,FormControl,Input,FormErrorMessage,Button,useColorModeValue,Modal,ModalOverlay,ModalContent,ModalHeader,ModalBody,ModalFooter
+    Box,Flex,Text,Image,TabIndicator,Button,useColorModeValue,Modal,ModalOverlay,ModalContent,ModalHeader,ModalBody,ModalFooter
   } from '@chakra-ui/react'
-  import { Field, Form, Formik } from 'formik';
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
 import picprofile from '../assets/profile2.png'
 import { Link } from 'react-router-dom';
 import logout from '../assets/exit.png'
-
+import Cookies from 'js-cookie';
+import { useNavigate } from 'react-router-dom';
 const Orderlist = () => {
     const activeTabColor = useColorModeValue('#0F63E9', '#0F63E9');
     const [isOpen, setIsOpen] = useState(false);
     const modalRef = useRef(null);
+    const navigate = useNavigate();
     const onOpen = () => {
         setIsOpen(true);
       };
+
+        const logout_page = () => {
+        Cookies.remove('email');
+        Cookies.remove('userData');
+        navigate("/")
+        window.location.reload();
+      }
     
       const onClose = () => {
         setIsOpen(false);
@@ -63,7 +71,7 @@ const Orderlist = () => {
                             
                         </AccordionItem>
 
-                        <Link to='/OL'>
+                        <Link to='/OLL'>
                         <Box h="65px" _hover={{ color: "#0F63E9", bg: "#ECF3FD"}} borderTop="1px" borderColor="gray.200">
                             <Flex h="100%" position="relative" right="-16px" top="22px">
                                 <Image src={picprofile} alt="Image 1" borderRadius="md" width="20px" height="20px" />
@@ -102,11 +110,10 @@ const Orderlist = () => {
                                         <Text color="#0F63E9" fontSize="14">ยกเลิก</Text>
                                     </Button>
                                     <Box w="10px" h="10px"  />
-                                    <Link to='/'>
-                                        <Button onClick={onOpen} w="90px" h="40px" borderRadius="8px" bg="#0F63E9" border="none" p={0} _hover={{ bg: '#0F63E9', boxShadow: '0 5px 10px rgba(0, 0, 0, .2)' }} position="relative" top="0px" >
-                                            <Text color="white" fontSize="14">ออกจากระบบ</Text>
-                                        </Button>
-                                    </Link>
+                                    
+                                    <Button onClick={logout_page} w="90px" h="40px" borderRadius="8px" bg="#0F63E9" border="none" p={0} _hover={{ bg: '#0F63E9', boxShadow: '0 5px 10px rgba(0, 0, 0, .2)' }} position="relative" top="0px" >
+                                        <Text color="white" fontSize="14">ออกจากระบบ</Text>
+                                    </Button>
                                     
                                 </ModalFooter>
                                 </ModalContent>

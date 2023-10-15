@@ -8,17 +8,20 @@ import {
     Box,Flex,Text,Image,Button,Modal,ModalOverlay,ModalContent,ModalHeader,ModalBody,ModalFooter
   } from '@chakra-ui/react'
 import picprofile from '../assets/profile2.png'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import logout from '../assets/exit.png'
 import { Context } from '../context/context';
 import { getLikeProduct } from '../helper/fetchData';
 import { bufferToImage } from '../helper/bufferToImage';
 import CardItemNotSale from '../New Component/CardItemNotSale'
+import { Logout_page } from '../helper/logout';
+import Cookies from 'js-cookie';
 const Orderlist = () => {
     const [isOpen, setIsOpen] = useState(false);
     const modalRef = useRef(null);
     const {userData, setUserData} = useContext(Context);
     const [likeProductData, setLikeProductData] = useState([])
+    const navigate = useNavigate();
     useEffect(()=>{
         Promise.all([getLikeProduct()])
         .then(([resLikeProduct])=>{
@@ -33,7 +36,12 @@ const Orderlist = () => {
     const onOpen = () => {
       setIsOpen(true);
     };
-  
+    const logout_page = () =>{
+      Cookies.remove('email');
+      Cookies.remove('userData');
+      navigate("/")
+      window.location.reload();
+    }
     const onClose = () => {
       setIsOpen(false);
     };
@@ -116,11 +124,11 @@ const Orderlist = () => {
                                         <Text color="#0F63E9" fontSize="14">ยกเลิก</Text>
                                     </Button>
                                     <Box w="10px" h="10px"  />
-                                    <Link to='/'>
-                                        <Button onClick={onOpen} w="90px" h="40px" borderRadius="8px" bg="#0F63E9" border="none" p={0} _hover={{ bg: '#0F63E9', boxShadow: '0 5px 10px rgba(0, 0, 0, .2)' }} position="relative" top="0px" >
+                            
+                                        <Button onClick={logout_page} w="90px" h="40px" borderRadius="8px" bg="#0F63E9" border="none" p={0} _hover={{ bg: '#0F63E9', boxShadow: '0 5px 10px rgba(0, 0, 0, .2)' }} position="relative" top="0px" >
                                             <Text color="white" fontSize="14">ออกจากระบบ</Text>
                                         </Button>
-                                    </Link>
+
                                     
                                 </ModalFooter>
                             </ModalContent>

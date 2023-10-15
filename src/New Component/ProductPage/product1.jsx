@@ -15,7 +15,8 @@ import {
 } from '@chakra-ui/react';
 // Import the missing useDisclosure hook
 import { useDisclosure } from '@chakra-ui/react';
-import favorite from './favorite.png'
+import favorite from './favorite.png';
+import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { dislikeProduct, likeProduct, addCart } from '../../helper/fetchData';
 import Cookies from 'js-cookie';
@@ -170,7 +171,7 @@ const Product1 = () => {
           <Box w='440px' h='610px'>
             <Flex>
               <Text>{product.brandName}</Text>
-              {  Cookies.get("email") &&
+              {  Cookies &&
                 <Box p="1" w="20px" h="20px" position="relative" right="-270px"  >
                     <Button w="40px" h="40px" borderRadius="50%" border="none" p={0} 
                     onClick={handleClick}
