@@ -28,9 +28,10 @@ const ClickandCollect = () => { // Change function name to start with an upperca
         //         navigate("/OrderConSBT")
         //     }else{
         //         console.warn(res.data.message);
+        //          alert(res.data.message)
         //     }
         // })
-        navigate("/OrderConSBT", { state: { totalPrice : totalPrice, addressData : addressData, cartData : cartData } })
+        navigate("/OrderConCAC", { state: { totalPrice : totalPrice, addressData : addressData, cartData : cartData } })
     }
   return (
     <Box w='1260px' h='1300px' position="relative" right="-320px" bottom="-20px" fontFamily={'Kanit, sans-serif'}>
