@@ -18,21 +18,40 @@ export function deleteProductCart_API(productId){
 }
 
 export function getBestSeller(){
-    return axios.get(`${process.env.REACT_APP_URL_API}product/best_selling`)
+    return axios.post(`${process.env.REACT_APP_URL_API}product/best_selling`,{email : Cookies.get('email')})
 }
 
 export function getSuggestProduct(){
-    return axios.get(`${process.env.REACT_APP_URL_API}product/suggest_product`)
+    return axios.post(`${process.env.REACT_APP_URL_API}product/suggest_product`, {email : Cookies.get('email')})
 }
 
 export function getNewestProduct(){
-    return axios.get(`${process.env.REACT_APP_URL_API}product/newest`)
+    return axios.post(`${process.env.REACT_APP_URL_API}product/newest`, {email : Cookies.get('email')})
 }
 
 export function getLikeProduct(){
     return axios.post(`${process.env.REACT_APP_URL_API}product/getLikeProduct`, {email : Cookies.get('email')})
 }
 
+export function likeProduct(productId){
+    return axios.post(`${process.env.REACT_APP_URL_API}product/likeProduct`, {email : Cookies.get('email'), productId : productId})
+}
+
+export function dislikeProduct(productId){
+    return axios.post(`${process.env.REACT_APP_URL_API}product/dislikeProduct`, {email : Cookies.get('email'), productId : productId})
+}
+
+export function login(email, password){
+    return axios.post(`${process.env.REACT_APP_URL_API}auth/login`, { email : email, password : password, role : "user"})
+}
+
+export function register(email, password){
+    return axios.post(`${process.env.REACT_APP_URL_API}register/general`, { email : email, password : password})
+}
+
+export function addCart(productId){
+    return axios.post(`${process.env.REACT_APP_URL_API}cart/addCart`, {email : Cookies.get('email'), productId : productId})
+}
 export function paymentCreditcard(productList, cardNumber, expirationDate, holderName, cvcCode, totalPrice, addressData){
     const FinalProductList = [];
     for(let product of productList){

@@ -66,6 +66,8 @@ const Slider3 = ({newProductData}) => {
                                                 brandName = {product.brandName} 
                                                 productName = {product.productName} 
                                                 price = {product.price} 
+                                                islike = {product.islike}
+                                                product = {product}
                                             />
                                             <Box width="20px" height="100%" borderRadius="md"/>
                                             {/* <CardItemHasSale/>

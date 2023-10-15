@@ -24,19 +24,15 @@ import { setObjUserData } from './helper/setobjData';
 import { fetchUserData_API, getBestSeller, getNewestProduct, getSuggestProduct } from './helper/fetchData';
 const App =()=> {
     const {userData, setUserData} = useContext(Context)
-    Cookies.set('email',"pathinya@gmail.com");
+    // Cookies.set('email',"pathinya@gmail.com");
     const [bestSellerData, setBestSellerData] = useState([]);
     const [suggestProductData, setSuggestProduct] = useState([]);
     const [newProductData, setNewProductData] = useState([]);
     
     useEffect(()=>{
-        Promise.all([fetchUserData_API(), getBestSeller(),getSuggestProduct(), getNewestProduct() ])
-        .then(([resUserData,resBestSeller, resSuggestProduct, resNewProduct])=>{
-            if(resUserData.data.status && resBestSeller.data.status && resSuggestProduct.data.status && resNewProduct.data.status){
-                const objUserData = setObjUserData(resUserData.data.user);
-                const json = JSON.stringify(objUserData);
-                Cookies.set('userData', json);
-                setUserData(objUserData);
+        Promise.all([ getBestSeller(),getSuggestProduct(), getNewestProduct() ])
+        .then(([resBestSeller, resSuggestProduct, resNewProduct])=>{
+            if(resBestSeller.data.status && resSuggestProduct.data.status && resNewProduct.data.status){
                 setBestSellerData(resBestSeller.data.bestSellerProduct);
                 setSuggestProduct(resSuggestProduct.data.randomProduct);
                 setNewProductData(resNewProduct.data.newestProduct);

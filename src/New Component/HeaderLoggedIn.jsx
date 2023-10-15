@@ -9,7 +9,7 @@ import profilewhite from '../assets/profilewhite.png'
 import favorite from '../assets/favorite.png'
 import emailpic from '../assets/email.png'
 import leftchevron from '../assets/leftchevron.png'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Field, Form, Formik } from 'formik';
 import { Tab, FormControl,
   FormLabel,
@@ -23,6 +23,7 @@ import { Tab, FormControl,
   Flex, Menu, MenuButton, MenuList, MenuItem, HStack, Input, 
   InputGroup, InputLeftElement, Image,Box } from '@chakra-ui/react';
 import { Checkbox, CheckboxGroup } from '@chakra-ui/react'
+import Cookies from 'js-cookie';
 
   const SearchButtonWithModal = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -67,6 +68,7 @@ import { Checkbox, CheckboxGroup } from '@chakra-ui/react'
 
   export const HeaderLoggedIn = () => {
     const [isScrolled, setIsScrolled] = useState(false);
+    const navigate = useNavigate();
     const LinkWithoutUnderline = {
       textDecoration: 'none',
     };
@@ -86,6 +88,13 @@ import { Checkbox, CheckboxGroup } from '@chakra-ui/react'
       };
     }, []);
 
+    const handleLogout = () => {
+        Cookies.remove('email');
+        Cookies.remove('userData');
+        navigate("/")
+        window.location.reload();
+        
+    }
     return (
     <Flex as="header" align="center" py={2} px={320} borderBottom="1px" borderColor="gray.200" position={isScrolled ? 'fixed' : 'static'} top={isScrolled ? '0' : 'auto'} bg={isScrolled ? 'white' : 'transparent'} boxShadow={isScrolled ? '0px 1px 6px rgba(0, 0, 0, 0.1)' : 'none'} transition="all" zIndex="999">
       <Box w="5000px">
@@ -224,11 +233,10 @@ import { Checkbox, CheckboxGroup } from '@chakra-ui/react'
             < Link to='/Account' ><MenuItem _hover={{ color: '#0F63E9', bg: '#ECF3FD' }}>บัญชีของฉัน</MenuItem></Link>
               <Link to='/OL' ><MenuItem _hover={{ color: '#0F63E9', bg: '#ECF3FD' }}>รายการคำสั่งซื้อ</MenuItem></Link>
               <Link to='/WL' ><MenuItem _hover={{ color: '#0F63E9', bg: '#ECF3FD' }}>รายการสินค้าที่สนใจ</MenuItem></Link>
-              <Link to='/' >
-                <MenuItem _hover={{ color: '#0F63E9', bg: '#ECF3FD' }}>
-                  ออกจากระบบ
-                </MenuItem>
-              </Link>
+              <MenuItem _hover={{ color: '#0F63E9', bg: '#ECF3FD' }} onClick={handleLogout}>
+                ออกจากระบบ
+              </MenuItem>
+              
             </MenuList>
           </Menu>
           

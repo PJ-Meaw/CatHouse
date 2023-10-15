@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useContext } from 'react';
 import logostore from '../assets/logo.png'
 import fulllogostore from '../assets/fulllogo.png'
 import search from '../assets/search.png'
@@ -9,7 +9,7 @@ import favorite from '../assets/favorite.png'
 import emailpic from '../assets/email.png'
 import leftchevron from '../assets/leftchevron.png'
 import googleicon from '../assets/googleicon.png'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Field, Form, Formik } from 'formik';
 import { Tab, FormControl,
   FormLabel,
@@ -25,6 +25,9 @@ import { Tab, FormControl,
 import { Checkbox, CheckboxGroup } from '@chakra-ui/react'
 import HeaderLoggedIn from './HeaderLoggedIn';
 import Cookies from "js-cookie";
+import { login, register } from '../helper/fetchData';
+import { setObjUserData } from '../helper/setobjData';
+import { Context } from '../context/context';
   const SearchButtonWithModal = () => {
     const [isOpen, setIsOpen] = useState(false);
     const modalRef = useRef(null);
@@ -111,9 +114,15 @@ import Cookies from "js-cookie";
   const LoginButtonWithEmail = () => {
     const [isOpen, setIsOpen] = useState(false);
     const modalRef = useRef(null);
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [email_register, setEmail_register] = useState("");
+    const [password_register, setPassword_register] = useState("");
+    const [confirm_password_register, setConfirm_password_register] = useState("");
+    const {userData, setUserData} = useContext(Context)
     const activeTabColor = useColorModeValue('#0F63E9', '#0F63E9');
     const activeTabBgColor = useColorModeValue('#D8E6FB', '#D8E6FB');
-  
+    const navigate = useNavigate()
     const onOpen = () => {
       setIsOpen(true);
     };
@@ -127,7 +136,6 @@ import Cookies from "js-cookie";
         onClose();
       }
     };
-
 
     return (
       <Box p="1">
@@ -155,10 +163,19 @@ import Cookies from "js-cookie";
                 <Formik
                   initialValues={{ }}
                   onSubmit={(values, actions) => {
-                    setTimeout(() => {
-                      alert(JSON.stringify(values, null, 2))
-                      actions.setSubmitting(false)
-                    }, 1000)
+                    Promise.all([login(email, password)]).then(([res])=>{
+                        if(res.data.status){
+                            alert(res.data.message);
+                            const objUserData = setObjUserData(res.data.user);
+                            const json = JSON.stringify(objUserData);
+                            Cookies.set('userData', json);
+                            Cookies.set('email', res.data.user.email);
+                            setUserData(objUserData);
+                            window.location.reload();
+                        }else{
+                            alert(res.data.message);
+                        }
+                    })
                   }}
                 >
                   {(props) => (
@@ -167,7 +184,7 @@ import Cookies from "js-cookie";
                       <Field name='email'>
                         {({ field, form }) => (
                           <FormControl isInvalid={form.errors.name && form.touched.name}>
-                            <Input {...field} placeholder='อีเมล' />
+                            <Input {...field} placeholder='อีเมล' onChange={(e)=>setEmail(e.target.value)}/>
                             <FormErrorMessage>{form.errors.name}</FormErrorMessage>
                           </FormControl>
                         )}
@@ -176,7 +193,7 @@ import Cookies from "js-cookie";
                       <Field name='password'>
                         {({ field, form }) => (
                           <FormControl isInvalid={form.errors.name && form.touched.name}>
-                            <Input {...field} placeholder='รหัสผ่าน' />
+                            <Input {...field} placeholder='รหัสผ่าน' onChange={(e)=>setPassword(e.target.value)}/>
                             <FormErrorMessage>{form.errors.name}</FormErrorMessage>
                           </FormControl>
                         )}
@@ -188,13 +205,12 @@ import Cookies from "js-cookie";
                         color="white"
                         fontSize="14px"
                         bg="#0F63E9"
-                        isLoading={props.isSubmitting}
+                        // isLoading={props.isSubmitting}
                         type='submit'
                         position="relative"
                         top="20px"
-                        left="50px"> เข้าสู่ระบบ
-                        
-
+                        left="50px"
+                        > เข้าสู่ระบบ
                       </Button>
                     </Form>
                   )}
@@ -204,15 +220,24 @@ import Cookies from "js-cookie";
 
               </TabPanel>
 
+              {/* For Register */}
               <TabPanel>
-                
                 <Formik
                     initialValues={{ }}
                     onSubmit={(values, actions) => {
-                      setTimeout(() => {
-                        alert(JSON.stringify(values, null, 2))
-                        actions.setSubmitting(false)
-                      }, 1000)
+                        console.log(email_register + password_register + confirm_password_register)
+                        if(confirm_password_register != password_register){
+                            alert("password not match")
+                        }else{
+                            register(email_register, password_register).then((res)=>{
+                                if(res.data.status){
+                                    alert(res.data.message);
+                                    window.location.reload();
+                                }else{
+                                    alert(res.data.message);
+                                }
+                            })
+                        }
                     }}
                   >
                     {(props) => (
@@ -221,7 +246,7 @@ import Cookies from "js-cookie";
                         <Field name='email'>
                           {({ field, form }) => (
                             <FormControl isInvalid={form.errors.name && form.touched.name}>
-                              <Input {...field} placeholder='อีเมล' />
+                              <Input {...field} placeholder='อีเมล' onChange={(e)=>{setEmail_register(e.target.value)}}/>
                               <FormErrorMessage>{form.errors.name}</FormErrorMessage>
                             </FormControl>
                           )}
@@ -230,7 +255,7 @@ import Cookies from "js-cookie";
                         <Field name='password'>
                           {({ field, form }) => (
                             <FormControl isInvalid={form.errors.name && form.touched.name}>
-                              <Input {...field} placeholder='รหัสผ่าน' />
+                              <Input {...field} placeholder='รหัสผ่าน' onChange={(e)=>{setPassword_register(e.target.value)}}/>
                               <FormErrorMessage>{form.errors.name}</FormErrorMessage>
                             </FormControl>
                           )}
@@ -239,7 +264,7 @@ import Cookies from "js-cookie";
                         <Field name='checkpassword'>
                         {({ field, form }) => (
                           <FormControl isInvalid={form.errors.name && form.touched.name}>
-                            <Input {...field} placeholder='ยืนยันรหัสผ่าน' />
+                            <Input {...field} placeholder='ยืนยันรหัสผ่าน' onChange={(e)=>{setConfirm_password_register(e.target.value)}}/>
                             <FormErrorMessage>{form.errors.name}</FormErrorMessage>
                           </FormControl>
                         )}
@@ -258,7 +283,7 @@ import Cookies from "js-cookie";
                           color="white"
                           fontSize="14px"
                           bg="#0F63E9"
-                          isLoading={props.isSubmitting}
+                        //   isLoading={props.isSubmitting}
                           type='submit'
                           position="relative"
                           top="10px"

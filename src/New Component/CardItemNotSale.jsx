@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { Box,Flex, Text, Image } from '@chakra-ui/react';
 
 const CardItemNotSale = (props) => {
-    const {urlImage, brandName, productName, price} = props;
+    const {urlImage, brandName, productName, price, islike, product} = props;
     const fetchUserData = () => {
         // fetch("http://localhost:3100/")
         //   .then(response => {
@@ -22,14 +22,12 @@ const CardItemNotSale = (props) => {
       useEffect(()=>{
         fetchUserData()
       },[])
-  return (
-     <Flex align="center" justify="center">
-        
-        <Link to={'/PD1'}>
+    return (
+        <Flex align="center" justify="center">
             <Box width="240px" height="390px" borderRadius="15px" position="relative" border="1px solid #C3CCD4" _hover={{boxShadow: '0 0 20px rgba(0, 0, 0, 0.1)'}}>
                 <Box position="absolute" top="0" left="0"  width="100%" height="238px" borderRadius="15px 15px 0 0">
                     <Image src={urlImage != undefined ? urlImage : bigimg3} alt="bigimg3" borderRadius="15px" objectFit="cover" width="100%" height="100%" />
-                    <Link to={'/PD1'}>
+                    <Link to={'/PD1'} state={{product : product, islike : islike, urlImage : urlImage}}>
                         <Box position="absolute" top="0" left="0"  width="100%" height="100%" borderRadius="15px" _hover={{background: 'rgba(218, 220, 222, 0.5)'}}>
                         </Box>
                     </Link>
@@ -42,10 +40,8 @@ const CardItemNotSale = (props) => {
                     <Text fontFamily={'Kanit, sans-serif'} position="absolute" top="2px" left="20px" fontSize="10" fontWeight="bold" color="#8996A0"> ส่งฟรี </Text>
                 </Box>
             </Box>
-        </Link>
-        
-     </Flex>
-  );
+        </Flex>
+    );
 };
 
 export default CardItemNotSale;

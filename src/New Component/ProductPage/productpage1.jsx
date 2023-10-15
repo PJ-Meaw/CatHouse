@@ -1,5 +1,5 @@
 import React from 'react';
-import HeaderLoggedIn from '../HeaderLoggedIn';
+import HeaderNotLoggedIn from '../HeaderNotLoggedIn';
 import PD1 from '../ProductPage/product1';
 import Footer from '../NewFooter';
 import {Flex
@@ -9,7 +9,7 @@ const productpage1 = () => {
   // fontFamily={'Kanit, sans-serif'}
   return (
     <div>
-        <HeaderLoggedIn/>
+        <HeaderNotLoggedIn/>
         <PD1/>
         <Footer/>
     </div>

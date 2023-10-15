@@ -21,7 +21,6 @@ const Cart = () => { // Change function name to start with an uppercase letter
     const [totalPrice , setTotalPrice] = useState(0);
     useEffect(()=>{
         console.log(userData);
-        Cookies.set('email',"pathinya@gmail.com");
         Promise.all([fetchUserData_API(), fetchDetailCart_API()])
         .then(([resUserData,resDetailCart])=>{
             if(resUserData.data.status && resDetailCart.data.status){
@@ -90,6 +89,7 @@ const Cart = () => { // Change function name to start with an uppercase letter
         <Box>
         {
             cartData?.map((product)=>{
+                console.log(product.productId)
                 const urlImage = product.productImage ? bufferToImage(product.productImage.data, product.productImage.contentType) : "";
                 return (
                     <Box w='705px' h='200px' borderTop="1px solid #D3D3D3" key={product.productId}>

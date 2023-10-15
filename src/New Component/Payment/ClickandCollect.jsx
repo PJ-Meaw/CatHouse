@@ -20,18 +20,18 @@ const ClickandCollect = () => { // Change function name to start with an upperca
     expirationDate : "02/30"
   });
     const handlePayment = () =>{
-        // const splitname = addressData.name.split(" ");
-        // const CompleteAddressData = {...addressData, firstName: splitname[0], lastName : splitname[1]}
-        // Promise.all([(paymentCreditcard(cartData, creditcardData.cardNumber, creditcardData.expirationDate, creditcardData.holderName, Number(creditcardData.cvcCode), totalPrice, CompleteAddressData))])
-        // .then(([res])=>{
-        //     if(res.data.status){
-        //         navigate("/OrderConSBT")
-        //     }else{
-        //         console.warn(res.data.message);
-        //          alert(res.data.message)
-        //     }
-        // })
-        navigate("/OrderConCAC", { state: { totalPrice : totalPrice, addressData : addressData, cartData : cartData } })
+        const splitname = addressData.name.split(" ");
+        const CompleteAddressData = {...addressData, firstName: splitname[0], lastName : splitname[1]}
+        Promise.all([(paymentCreditcard(cartData, creditcardData.cardNumber, creditcardData.expirationDate, creditcardData.holderName, Number(creditcardData.cvcCode), totalPrice, CompleteAddressData))])
+        .then(([res])=>{
+            if(res.data.status){
+                navigate("/OrderConCAC", { state: { totalPrice : totalPrice, addressData : addressData, cartData : cartData } })
+            }else{
+                console.warn(res.data.message);
+                 alert(res.data.message)
+            }
+        })
+        
     }
   return (
     <Box w='1260px' h='1300px' position="relative" right="-320px" bottom="-20px" fontFamily={'Kanit, sans-serif'}>

@@ -1,4 +1,4 @@
-import HeaderLoggedIn from './New Component/HeaderLoggedIn';
+import HeaderNotLoggedIn from './New Component/HeaderNotLoggedIn';
 import Advert from './New Component/Advert';
 import Article from './New Component/Article';
 import Slider1 from './New Component/Slider1';
@@ -10,7 +10,7 @@ import Footer from './New Component/NewFooter';
 const HomewithLogin=()=>{
     return(
         <div>
-            <HeaderLoggedIn/>
+            <HeaderNotLoggedIn/>
             <Advert/>
             <Slider3/>
             <ShopBrand/>

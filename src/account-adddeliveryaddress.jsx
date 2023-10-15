@@ -1,12 +1,12 @@
 import { Flex } from '@chakra-ui/react';
-import HeaderLoggedIn from './New Component/HeaderLoggedIn';
+import HeaderNotLoggedIn from './New Component/HeaderNotLoggedIn';
 import AddDeliveryAddress from './New Component/AddDeliveryAddress';
 import Footer from './New Component/NewFooter';
 const MyAccount = () => {
   
   return (
     <div>
-      <HeaderLoggedIn/>
+      <HeaderNotLoggedIn/>
       <AddDeliveryAddress/>
       <Footer/>
       

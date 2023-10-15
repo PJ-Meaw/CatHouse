@@ -157,7 +157,8 @@ const Orderlist = () => {
                                                 brandName = {product.brandName} 
                                                 productName = {product.productName} 
                                                 price = {product.price}
-                                                // islike = {true}
+                                                islike = {true}
+                                                product = {product}
                                             />
                                         </>
                                     })

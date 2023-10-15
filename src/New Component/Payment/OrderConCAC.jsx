@@ -106,7 +106,9 @@ const {totalPrice, cartData, addressData} = useLocation().state;
                 <Link to={"/"}>
                     <Button w="150px" h="45px" position="relative" rounded="100px" bg="#0F63EA" color="white" _hover={{ bgColor: '#0058A3' }} left="-20px">กลับสู่หน้าหลัก</Button>
                 </Link>
-                <Button w="150px" h="45px" position="relative" rounded="100px" bg="#0F63EA" color="white" _hover={{ bgColor: '#0058A3' }} right="-20px">ดูรายการคำสั่งซื้อ</Button>
+                <Link to={"/OL"}>
+                    <Button w="150px" h="45px" position="relative" rounded="100px" bg="#0F63EA" color="white" _hover={{ bgColor: '#0058A3' }} right="-20px">ดูรายการคำสั่งซื้อ</Button>
+                </Link>
             </Flex> 
 
         </Box>
