@@ -46,10 +46,16 @@ const delAddress = (data) => {
   return http.post('user/del_address', data);
 };
 
+// email: string
+const getOrderOfUser = (data) => {
+  return http.post('user/order_list', data);
+};
+
 export default {
   updateProfile,
   confirmPasswordEmail,
   addNewAddress,
   updateAddress,
   delAddress,
+  getOrderOfUser,
 };
