@@ -15,6 +15,7 @@ import Account from './account-profile';
 import DA from './account-deliveryaddress';
 import DAA from './account-adddeliveryaddress';
 import OL from './account-orderlist';
+import OLL from './account-addorderlist';
 import WL from './account-wishlist';
 import WLL from './account-addwishlist';
 import Cart from './New Component/Cart/CartPage';
@@ -113,6 +114,11 @@ const router = createBrowserRouter([
   {
     path: "/OrderConCAC",
     element: <OrderConCAC/>
+    ,erroeElement:<ErrorPage/>
+  },
+  {
+    path: "/OLL",
+    element: <OLL/>
     ,erroeElement:<ErrorPage/>
   }
 ]);
