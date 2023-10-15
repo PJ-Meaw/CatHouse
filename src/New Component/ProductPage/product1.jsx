@@ -16,6 +16,7 @@ import {
 // Import the missing useDisclosure hook
 import { useDisclosure } from '@chakra-ui/react';
 import favorite from './favorite.png';
+import { useEffect } from 'react';
 
 const ProductDetail = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -161,12 +162,12 @@ const Product1 = () => {
 
   const [image, setImage] = useState('');
 
-  useEffect(() => {
-    testGetImage().then((res) => {
-      const base64 = 'data:image/jpeg;base64,' + res.data.getImage;
-      setImage(base64);
-    });
-  }, []);
+  // useEffect(() => {
+  //   testGetImage().then((res) => {
+  //     const base64 = 'data:image/jpeg;base64,' + res.data.getImage;
+  //     setImage(base64);
+  //   });
+  // }, []);
 
   return (
     <Box
