@@ -62,6 +62,10 @@ export function register(email, password){
     return axios.post(`${process.env.REACT_APP_URL_API}register/general`, { email : email, password : password})
 }
 
+export function forgotPassword(email, oldPassword, newPassword){
+    return axios.post(`${process.env.REACT_APP_URL_API}user/send_email`, { email : email, updateObj : {password : oldPassword, newPassword : newPassword}})
+}
+
 export function addCart(productId){
     return axios.post(`${process.env.REACT_APP_URL_API}cart/addCart`, {email : Cookies.get('email'), productId : productId})
 }

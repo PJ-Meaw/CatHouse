@@ -25,7 +25,7 @@ import { Tab, FormControl,
 import { Checkbox, CheckboxGroup } from '@chakra-ui/react'
 import HeaderLoggedIn from './HeaderLoggedIn';
 import Cookies from "js-cookie";
-import { login, register } from '../helper/fetchData';
+import { forgotPassword, login, register } from '../helper/fetchData';
 import { setObjUserData } from '../helper/setobjData';
 import { Context } from '../context/context';
   const SearchButtonWithModal = () => {
@@ -308,6 +308,9 @@ import { Context } from '../context/context';
   const Forgotpassword = () => {
     const [isOpen, setIsOpen] = useState(false);
     const modalRef = useRef(null);
+    const [email_forgotpassword, setEmail_forgotpassword] = useState("");
+    const [oldpassword_forgotpassword, setOldpassword_forgotpassword] = useState("");
+    const [newPassword_forgotpassword, setNewPassword_forgotpassword] = useState("");
   
     const onOpen = () => {
       setIsOpen(true);
@@ -332,7 +335,7 @@ import { Context } from '../context/context';
           <ModalContent ref={modalRef} maxW="378px" w="90%" maxH="400px" h="90%" position="relative" top="110px">
             
             <ModalHeader fontFamily={'Kanit, sans-serif'}>
-              <Image src={logostore} alt="Logo" width="120px" height="90px" position="relative" right="-105px" top="25px"/>
+              {/* <Image src={logostore} alt="Logo" width="120px" height="90px" position="relative" right="-105px" top="25px"/> */}
               <Text position="relative" top="50px" align="center" justify="center">ลืมรหัสผ่าน</Text> 
             </ModalHeader>
             <ModalBody align="center" justify="center">
@@ -341,10 +344,10 @@ import { Context } from '../context/context';
             <Formik 
                 initialValues={{ }}
                 onSubmit={(values, actions) => {
-                  setTimeout(() => {
-                    alert(JSON.stringify(values, null, 2))
-                    actions.setSubmitting(false)
-                  }, 1000)
+                    // alert("meaw")
+                    forgotPassword(email_forgotpassword, oldpassword_forgotpassword, newPassword_forgotpassword).then((res)=>{
+                        alert(res.data.message);
+                    })
                 }}
               >
                 {(props) => (
@@ -358,7 +361,9 @@ import { Context } from '../context/context';
                       <Field name='email' >
                         {({ field, form }) => (
                           <FormControl isInvalid={form.errors.name && form.touched.name}>
-                            <Input {...field} placeholder='อีเมล' fontFamily={'Kanit, sans-serif'}/>
+                            <Input {...field} placeholder='อีเมล' fontFamily={'Kanit, sans-serif'} onChange={(e)=>setEmail_forgotpassword(e.target.value)}/>
+                            <Input {...field} placeholder='รหัสผ่านเดิม' fontFamily={'Kanit, sans-serif'} marginY={3} onChange={(e)=>setOldpassword_forgotpassword(e.target.value)}/>
+                            <Input {...field} placeholder='รหัสผ่านใหม่' fontFamily={'Kanit, sans-serif'} onChange={(e)=>setNewPassword_forgotpassword(e.target.value)}/>
                             <FormErrorMessage>{form.errors.name}</FormErrorMessage>
                           </FormControl>
                         )}
@@ -370,7 +375,7 @@ import { Context } from '../context/context';
                       color="white"
                       fontSize="14px"
                       bg="#0F63E9"
-                      isLoading={props.isSubmitting}
+                    //   isLoading={props.isSubmitting}
                       type='submit'
                       position="relative"
                       top="55px"
